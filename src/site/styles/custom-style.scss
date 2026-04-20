@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap');
 
 /* ═══════════════════════════════════════════════════════════════
-   MEMENTORI GARDEN · v1.6
+   MEMENTORI GARDEN · v1.7
    IBM Plex Sans (headlines, weight 300) · Serif (body, 17px)
    IBM Plex Mono (meta — faded, barely visible, good waiter)
    Hermès orange #C85A18 · works on both light and dark
 
+   v1.7 adds:
+   - Golden ratio layout: sidebar 370px, content 600px (φ = 1.618)
+   - Mobile: filetree slides in from side (template default ≤ 800px)
    v1.6 fixes:
    - Inline code: transparent bg, just mono+faded (no block shadow)
    - Speaker names (strong at section start): byline treatment
@@ -26,7 +29,7 @@
   --orange-tint2: rgba(200, 90, 24, 0.12);
   --blue-link:    #3a6090;
   --blue-hover:   #2a4a70;
-  --content-width: 720px;
+  --content-width: 600px;
 }
 
 /* ── 2. OVERRIDE .theme-dark VARS (body has this class) ──────── */
@@ -324,7 +327,7 @@ a.filename, .notelink a.filename {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 220px;
+  max-width: 310px;
 }
 a.filename:hover, .notelink:hover a.filename { color: var(--orange) !important; border-bottom: none !important; }
 .notelink.active-note a.filename { color: var(--orange) !important; font-weight: 500; }
@@ -424,6 +427,23 @@ td { border-bottom: 1px solid #f0ebe4; padding: 0.35em 0.8em; color: #6a6058 !im
 main.content header { margin-bottom: 1.5em; padding-bottom: 1em; border-bottom: 1px solid #ddd8d0; }
 .header-meta { margin-top: 0.6em; }
 .header-tags { display: flex; flex-wrap: wrap; gap: 0.2em; margin-top: 0.4em; }
+
+
+/* ── 20. LAYOUT — GOLDEN RATIO ──────────────────────────────── */
+/* φ = 1.618  ·  Sidebar : Content  =  1 : φ
+   370px sidebar  ×  1.618  ≈  600px content
+   13-inch 1280px: 370 + 30 gap + 600 + 30 gap + 240 right = 1270px  ✓
+   IBM Plex Serif 17px  →  ~62 chars / line  — comfortable for all ages.
+   Mobile ≤ 800px: filetree collapses to hamburger drawer (template default,
+   no override needed — slides in from left on tap). */
+body {
+  --dg-filetree-width:     370px;
+  --dg-filetree-min-width: 370px;
+  --dg-filetree-gap:        30px;
+  --dg-content-max-width:  600px;
+  --dg-sidebar-max-width:  240px;
+  --dg-sidebar-gap:         30px;
+}
 
 /* ── 19. DARK MODE ───────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
