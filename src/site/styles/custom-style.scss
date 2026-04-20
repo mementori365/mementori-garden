@@ -1,158 +1,106 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap');
 
 /* ═══════════════════════════════════════════════════════════════
-   MEMENTORI GARDEN · v1.5
-   IBM Plex Sans (headlines, light) · Serif (body) · Mono (meta, faded)
-   Hermès orange #C85A18 · Warm off-white · Da Nang, April 2026
+   MEMENTORI GARDEN · v1.6
+   IBM Plex Sans (headlines, weight 300) · Serif (body, 17px)
+   IBM Plex Mono (meta — faded, barely visible, good waiter)
+   Hermès orange #C85A18 · works on both light and dark
 
-   Key fix in v1.5: correct class names from actual HTML inspection:
-   - Body has class="theme-dark" → override vars on .theme-dark
-   - Sidebar: .filetree-wrapper / .filetree-sidebar / .foldername / .filename / .notelink
-   - Content: main.content.cm-s-obsidian
-   - Tags: a.tag (no href) → must be excluded from link rules
-   - External links: .external-link class used in addition to href
+   v1.6 fixes:
+   - Inline code: transparent bg, just mono+faded (no block shadow)
+   - Speaker names (strong at section start): byline treatment
+   - Sidebar filename size reduced
+   - Callout default: clean bg
    ═══════════════════════════════════════════════════════════════ */
 
-/* ── 1. FONT IMPORT & DESIGN TOKENS ─────────────────────────── */
-
+/* ── 1. DESIGN TOKENS ────────────────────────────────────────── */
 :root {
-  --font-head:    'IBM Plex Sans',  system-ui, sans-serif;
-  --font-body:    'IBM Plex Serif', Georgia, serif;
-  --font-mono:    'IBM Plex Mono',  'Courier New', monospace;
+  --font-head: 'IBM Plex Sans',  system-ui, sans-serif;
+  --font-body: 'IBM Plex Serif', Georgia, serif;
+  --font-mono: 'IBM Plex Mono',  'Courier New', monospace;
 
-  /* Hermès orange */
   --orange:       #C85A18;
   --orange-hover: #A84A12;
-  --orange-faint: rgba(200, 90, 24, 0.5);
+  --orange-faint: rgba(200, 90, 24, 0.45);
   --orange-tint:  rgba(200, 90, 24, 0.06);
   --orange-tint2: rgba(200, 90, 24, 0.12);
-
-  /* External link blue */
   --blue-link:    #3a6090;
   --blue-hover:   #2a4a70;
-
   --content-width: 720px;
-  --line-height:   1.84;
 }
 
-/* ── 2. OVERRIDE THEME-DARK VARIABLES ────────────────────────
-   The body element has class="theme-dark" from the Digital Garden
-   template. All Obsidian base theme dark colors flow from here.
-   We override every relevant variable to force light mode.
-   ─────────────────────────────────────────────────────────── */
-
-.theme-dark,
-body.theme-dark {
+/* ── 2. OVERRIDE .theme-dark VARS (body has this class) ──────── */
+.theme-dark, body.theme-dark {
   color-scheme: light !important;
-
-  /* Backgrounds */
   --background-primary:          #faf9f7 !important;
   --background-primary-alt:      #f2ede8 !important;
   --background-secondary:        #f0ebe4 !important;
   --background-secondary-alt:    #ebe5de !important;
   --background-modifier-border:  #ddd8d0 !important;
-  --background-modifier-hover:   rgba(200, 90, 24, 0.06) !important;
-  --background-modifier-active-hover: rgba(200, 90, 24, 0.1) !important;
-
-  /* Text */
+  --background-modifier-hover:   rgba(200,90,24,0.06) !important;
   --text-normal:    #2a2520 !important;
   --text-muted:     #6a6058 !important;
   --text-faint:     #a09890 !important;
   --text-on-accent: #ffffff !important;
   --text-accent:    #C85A18 !important;
   --text-accent-hover: #A84A12 !important;
-
-  /* Interactive */
   --interactive-accent:       #C85A18 !important;
   --interactive-accent-hover: #A84A12 !important;
   --interactive-normal:       #f0ebe4 !important;
   --interactive-hover:        #ebe5de !important;
-
-  /* Links */
   --link-color:              #C85A18 !important;
   --link-color-hover:        #A84A12 !important;
   --link-unresolved-color:   #a09890 !important;
   --link-external-color:     #3a6090 !important;
-  --link-external-color-hover: #2a4a70 !important;
-
-  /* Code */
   --code-background:  #f2ede8 !important;
   --code-normal:      #6a6058 !important;
-  --code-comment:     #a09890 !important;
-  --code-tag:         #C85A18 !important;
-  --code-string:      #5a7a50 !important;
-
-  /* Callouts */
   --callout-default:  200, 90, 24 !important;
   --callout-tip:      100, 160, 100 !important;
-  --callout-info:     200, 90, 24 !important;
+  --callout-info:     58, 96, 144 !important;
   --callout-warning:  200, 170, 60 !important;
   --callout-danger:   180, 60, 60 !important;
-
-  /* Base color overrides */
-  --color-base-00: #faf9f7 !important;
-  --color-base-05: #f5f1ec !important;
-  --color-base-10: #f0ebe4 !important;
-  --color-base-20: #ebe5de !important;
-  --color-base-25: #e5ded6 !important;
-  --color-base-30: #ddd8d0 !important;
-  --color-base-35: #c8c2ba !important;
-  --color-base-40: #a09890 !important;
-  --color-base-50: #6a6058 !important;
-  --color-base-60: #4a4038 !important;
-  --color-base-70: #2a2520 !important;
-  --color-base-100: #1a1510 !important;
+  /* base color scale — light palette */
+  --color-base-00: #faf9f7 !important; --color-base-05: #f5f1ec !important;
+  --color-base-10: #f0ebe4 !important; --color-base-20: #ebe5de !important;
+  --color-base-25: #e5ded6 !important; --color-base-30: #ddd8d0 !important;
+  --color-base-35: #c8c2ba !important; --color-base-40: #a09890 !important;
+  --color-base-50: #6a6058 !important; --color-base-60: #4a4038 !important;
+  --color-base-70: #2a2520 !important; --color-base-100: #1a1510 !important;
   --mono-rgb-0:   255, 255, 255 !important;
   --mono-rgb-100: 0, 0, 0 !important;
   --highlight-mix-blend-mode: multiply !important;
 }
 
-/* ── 3. BASE — HTML & BODY ───────────────────────────────────── */
-
+/* ── 3. BASE ─────────────────────────────────────────────────── */
 html, body {
   background-color: #faf9f7 !important;
   color: #2a2520 !important;
   font-family: var(--font-body) !important;
   font-size: 17px !important;
-  line-height: var(--line-height) !important;
+  line-height: 1.84 !important;
   -webkit-font-smoothing: antialiased;
 }
 
 /* ── 4. HEADINGS — IBM Plex Sans, light & tall ───────────────── */
-
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-head) !important;
   color: #2a2520 !important;
   line-height: 1.2;
   letter-spacing: -0.01em;
 }
-
 h1 {
   font-size: 2.4rem !important;
   font-weight: 300 !important;
   letter-spacing: -0.025em;
   margin-bottom: 0.1em;
 }
-
-/* The Digital Garden inline style fights us here — override */
-.navbar h1,
-.filetree-sidebar h1 {
-  font-family: var(--font-head) !important;
-  font-weight: 600 !important;
-  font-size: 1rem !important;
-  letter-spacing: 0.05em;
-  color: #2a2520 !important;
-  margin: 0 !important;
-}
-
 h2 {
-  font-size: 1.45rem !important;
+  font-size: 1.5rem !important;
   font-weight: 400 !important;
   margin-top: 2.5em;
   padding-bottom: 0.3em;
   border-bottom: 1px solid #ddd8d0 !important;
 }
-
 h3 {
   font-size: 1.05rem !important;
   font-weight: 300 !important;
@@ -160,291 +108,250 @@ h3 {
   margin-top: 2em;
   color: #6a6058 !important;
 }
-
 h4, h5, h6 {
   font-size: 0.95rem !important;
   font-weight: 500 !important;
   color: #6a6058 !important;
 }
+/* Navbar + sidebar h1 override */
+.navbar h1, nav.navbar h1,
+.filetree-sidebar h1, nav.filetree-sidebar h1 {
+  font-family: var(--font-head) !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #2a2520 !important;
+  margin: 0 !important;
+  border-bottom: none !important;
+}
 
-/* ── 5. BODY TEXT — IBM Plex Serif ───────────────────────────── */
-
+/* ── 5. BODY TEXT ─────────────────────────────────────────────── */
 p, li, dt, dd {
   font-family: var(--font-body) !important;
   color: #2a2520 !important;
 }
-
 p { margin-bottom: 1.4em; }
 li { margin-bottom: 0.4em; line-height: 1.75; }
+em { color: inherit; font-style: italic; }
 strong { font-weight: 600; color: #2a2520 !important; }
-em { font-style: italic; color: inherit; }
 
-/* ── 6. MONO — faded waiter, reveals on hover ────────────────── */
+/* Speaker / byline names — strong at paragraph start
+   Pattern in Consilium: **Niklas Luhmann** — *Round 1*
+   These should feel like section bylines, not just bold body text.  */
+main.content p > strong:first-child {
+  font-family: var(--font-head) !important;
+  font-size: 1.0rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em;
+  color: #2a2520 !important;
+  display: inline;
+}
 
+/* ── 6. MONO — good waiter (barely there, emerges on need) ────── */
 code, pre, kbd {
   font-family: var(--font-mono) !important;
-  font-size: 0.78em;
-  background: #f2ede8 !important;
-  color: #a09890 !important;
-  border-radius: 3px;
-  transition: color 0.2s;
+  font-size: 0.79em;
 }
 
-/* Inline code — e.g. .notes.md, 0M — no black background */
-p code, li code, h1 code, h2 code, h3 code, td code {
-  background: #f2ede8 !important;
+/* Inline code: NO background, just the mono font and faded color.
+   The shape of the letters distinguishes; the box does not. */
+p code, li code, h1 code, h2 code, h3 code, td code, blockquote code {
+  background: transparent !important;
   color: #a09890 !important;
-  padding: 0.1em 0.35em;
-  border-radius: 3px;
+  padding: 0 !important;
   border: none !important;
+  border-radius: 0;
+  box-shadow: none !important;
 }
 
+/* Code blocks (pre > code) keep a subtle background */
 pre {
   display: block;
   padding: 1em 1.2em;
   overflow-x: auto;
+  background: #f2ede8 !important;
   color: #6a6058 !important;
   border: 1px solid #ddd8d0;
   border-radius: 4px;
   line-height: 1.6;
 }
+pre code {
+  background: transparent !important;
+  color: #6a6058 !important;
+  padding: 0 !important;
+}
 
-/* Metadata / frontmatter properties */
-.metadata-property,
-.metadata-property-key,
-.metadata-property-value,
+/* Frontmatter / metadata */
+.metadata-property, .metadata-property-key, .metadata-property-value,
 .frontmatter-container {
   font-family: var(--font-mono) !important;
-  font-size: 0.78em !important;
+  font-size: 0.77em !important;
   color: #a09890 !important;
   background: transparent !important;
 }
 
-/* ── 7. LINKS ─────────────────────────────────────────────────
-   Internal: orange with orange underline
-   External: blue with blue underline
-   Tags (a.tag): styled separately — MUST be excluded here
-   ─────────────────────────────────────────────────────────── */
-
-/* Internal links */
-a:not([href^="http"]):not([href^="https"]):not([href^="mailto"]):not(.tag):not(.filename):not([onclick]) {
-  color: var(--orange) !important;
-  text-decoration: none !important;
-  border-bottom: 1px solid rgba(200, 90, 24, 0.4) !important;
-  transition: color 0.15s, border-color 0.15s;
-}
-a:not([href^="http"]):not([href^="https"]):not([href^="mailto"]):not(.tag):not(.filename):not([onclick]):hover {
-  color: var(--orange-hover) !important;
-  border-bottom-color: var(--orange) !important;
-}
-
-/* Internal links inside content — more specific */
+/* ── 7. LINKS ─────────────────────────────────────────────────── */
+/* Internal — orange, thin underline */
 main.content a:not(.tag):not(.external-link):not([href^="http"]):not([href^="https"]):not([href^="mailto"]) {
   color: var(--orange) !important;
   text-decoration: none !important;
-  border-bottom: 1px solid rgba(200, 90, 24, 0.4) !important;
+  border-bottom: 1px solid rgba(200,90,24,0.38) !important;
+  transition: color 0.15s, border-color 0.15s;
 }
 main.content a:not(.tag):not(.external-link):not([href^="http"]):not([href^="https"]):not([href^="mailto"]):hover {
   color: var(--orange-hover) !important;
   border-bottom-color: var(--orange) !important;
 }
 
-/* External links (also use .external-link class in template) */
-a[href^="http"],
-a[href^="https"],
-a.external-link {
+/* External — blue, thin underline */
+a[href^="http"], a[href^="https"], a.external-link {
   color: var(--blue-link) !important;
   text-decoration: none !important;
-  border-bottom: 1px solid rgba(58, 96, 144, 0.4) !important;
+  border-bottom: 1px solid rgba(58,96,144,0.38) !important;
   transition: color 0.15s, border-color 0.15s;
 }
-a[href^="http"]:hover,
-a[href^="https"]:hover,
-a.external-link:hover {
+a[href^="http"]:hover, a[href^="https"]:hover, a.external-link:hover {
   color: var(--blue-hover) !important;
   border-bottom-color: var(--blue-link) !important;
 }
 
-/* Mailto */
+/* Mailto — orange */
 a[href^="mailto"] {
   color: var(--orange) !important;
-  border-bottom: 1px solid rgba(200, 90, 24, 0.4) !important;
+  border-bottom: 1px solid rgba(200,90,24,0.38) !important;
 }
 
 /* ── 8. TAGS / PILLS ─────────────────────────────────────────── */
-
-.tag,
-a.tag,
-.header-tags .tag,
-.header-tags a.tag {
+/* Header tags (navigation/action buttons) */
+.header-tags .tag, .header-tags a.tag {
   font-family: var(--font-mono) !important;
   font-size: 0.7em !important;
   color: var(--orange-faint) !important;
   background: var(--orange-tint) !important;
-  border: 1px solid rgba(200, 90, 24, 0.15) !important;
+  border: 1px solid rgba(200,90,24,0.18) !important;
   border-radius: 99px !important;
   padding: 0.1em 0.65em !important;
   display: inline-block !important;
   margin: 0.1em 0.2em !important;
   text-decoration: none !important;
-  border-bottom: 1px solid rgba(200, 90, 24, 0.15) !important;
+  border-bottom: 1px solid rgba(200,90,24,0.18) !important;
   box-shadow: none !important;
-  transition: color 0.2s, background 0.2s, border-color 0.2s;
   cursor: pointer;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
 }
-
-.tag:hover,
-a.tag:hover {
+.header-tags .tag:hover, .header-tags a.tag:hover {
   color: var(--orange) !important;
   background: var(--orange-tint2) !important;
-  border-color: rgba(200, 90, 24, 0.35) !important;
-  border-bottom-color: rgba(200, 90, 24, 0.35) !important;
+  border-color: rgba(200,90,24,0.4) !important;
+  border-bottom-color: rgba(200,90,24,0.4) !important;
+}
+
+/* Body tags (informational — family name, relation labels)
+   Slightly more muted, smaller, no pointer hand — these are labels */
+main.content .tag, main.content a.tag {
+  font-family: var(--font-mono) !important;
+  font-size: 0.68em !important;
+  color: #b8b0a8 !important;
+  background: transparent !important;
+  border: 1px solid rgba(180,170,160,0.3) !important;
+  border-radius: 99px !important;
+  padding: 0.05em 0.55em !important;
+  display: inline-block !important;
+  margin: 0.05em 0.15em !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid rgba(180,170,160,0.3) !important;
+  box-shadow: none !important;
+  cursor: default;
+}
+main.content .tag:hover, main.content a.tag:hover {
+  color: #8a8078 !important;
+  border-color: rgba(160,150,140,0.5) !important;
+  border-bottom-color: rgba(160,150,140,0.5) !important;
 }
 
 /* ── 9. HIGHLIGHTED TEXT (==mark==) ──────────────────────────── */
-
 mark {
-  background-color: rgba(200, 90, 24, 0.12) !important;
+  background-color: rgba(200,90,24,0.12) !important;
   color: #2a2520 !important;
   border-radius: 2px;
-  padding: 0.05em 0.15em;
+  padding: 0.05em 0.12em;
   -webkit-box-decoration-break: clone;
 }
 
 /* ── 10. CONTENT CONTAINER ──────────────────────────────────── */
-
-main.content,
-.content.cm-s-obsidian {
+main.content, .content.cm-s-obsidian {
   max-width: var(--content-width);
   background: #faf9f7 !important;
   color: #2a2520 !important;
   font-family: var(--font-body) !important;
 }
 
-/* ── 11. NAVBAR ─────────────────────────────────────────────── */
-
-.navbar,
-nav.navbar {
+/* ── 11. NAVBAR ──────────────────────────────────────────────── */
+.navbar, nav.navbar {
   background-color: #faf9f7 !important;
   border-bottom: 1px solid #ddd8d0 !important;
 }
 
-/* Site title — hide "Digital Garden", replace with "Mementori" */
-.navbar > .navbar-inner h1,
-nav.navbar h1:first-of-type {
-  font-family: var(--font-head) !important;
-  font-weight: 600 !important;
-  font-size: 0.95rem !important;
-  letter-spacing: 0.04em;
-  color: #2a2520 !important;
-  text-transform: uppercase;
-}
-
-/* ── 12. FILETREE SIDEBAR ───────────────────────────────────── */
-
+/* ── 12. FILETREE SIDEBAR ────────────────────────────────────── */
 .filetree-wrapper {
   background-color: #f0ebe4 !important;
 }
-
-.filetree-sidebar,
-nav.filetree-sidebar {
+.filetree-sidebar, nav.filetree-sidebar {
   background-color: #f0ebe4 !important;
   color: #6a6058 !important;
 }
-
-/* Folder names */
-.foldername,
-.foldername-wrapper,
-span.foldername {
+/* Folder names — faded mono, uppercase */
+.foldername, span.foldername {
   font-family: var(--font-mono) !important;
-  font-size: 0.68rem !important;
+  font-size: 0.65rem !important;
   color: #a09890 !important;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  cursor: pointer;
   transition: color 0.15s;
 }
-.foldername:hover,
-.foldername-wrapper:hover .foldername {
-  color: var(--orange) !important;
-}
-
-/* File links */
-a.filename,
-.notelink a,
-.notelink a.filename {
+.foldername-wrapper:hover .foldername { color: var(--orange) !important; }
+/* File links — smaller, warm gray */
+a.filename, .notelink a.filename {
   font-family: var(--font-mono) !important;
-  font-size: 0.76rem !important;
+  font-size: 0.72rem !important;
   color: #6a6058 !important;
   text-decoration: none !important;
   border-bottom: none !important;
   display: block;
   padding: 1px 0;
   transition: color 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
 }
-a.filename:hover,
-.notelink:hover a.filename {
-  color: var(--orange) !important;
-  border-bottom: none !important;
-}
+a.filename:hover, .notelink:hover a.filename { color: var(--orange) !important; border-bottom: none !important; }
+.notelink.active-note a.filename { color: var(--orange) !important; font-weight: 500; }
 
-/* Active note */
-.notelink.active-note a.filename {
-  color: var(--orange) !important;
-  font-weight: 500;
-}
-
-/* Filetree title h1 */
-.filetree-sidebar h1 {
-  font-family: var(--font-head) !important;
-  font-size: 0.9rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.05em;
-  color: #2a2520 !important;
-  text-transform: uppercase;
-  border-bottom: 1px solid #ddd8d0;
-  padding-bottom: 0.5em;
-  margin-bottom: 1em;
-}
-
-/* ── 13. TOC (right side) ───────────────────────────────────── */
-
-.toc,
-.toc-container {
+/* ── 13. TOC ─────────────────────────────────────────────────── */
+.toc, .toc-container {
   font-family: var(--font-mono) !important;
   font-size: 0.74rem !important;
   color: #a09890 !important;
   background: transparent !important;
   border-left: 1px solid #ddd8d0 !important;
 }
-
-.toc-title,
-.toc-title-container {
+.toc-title, .toc-title-container {
   font-family: var(--font-mono) !important;
-  font-size: 0.65rem !important;
+  font-size: 0.64rem !important;
   color: #a09890 !important;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
-
-.toc a {
-  color: #a09890 !important;
-  text-decoration: none !important;
-  border-bottom: none !important;
-  display: block;
-  padding: 0.2em 0;
-  transition: color 0.15s;
-}
+.toc a { color: #a09890 !important; border-bottom: none !important; display: block; padding: 0.2em 0; transition: color 0.15s; }
 .toc a:hover { color: var(--orange) !important; }
 .toc a.active { color: var(--orange) !important; font-weight: 500; }
 
 /* ── 14. BLOCKQUOTES ─────────────────────────────────────────── */
-
 blockquote {
-  border-left: 2px solid rgba(200, 90, 24, 0.35) !important;
-  border-right: none !important;
-  border-top: none !important;
-  border-bottom: none !important;
+  border-left: 2px solid rgba(200,90,24,0.3) !important;
+  border-right: none !important; border-top: none !important; border-bottom: none !important;
   margin: 2em 0 !important;
   padding: 0.4em 1.5em !important;
   background: transparent !important;
@@ -452,243 +359,113 @@ blockquote {
   font-family: var(--font-body) !important;
   font-style: italic;
 }
-blockquote p { color: #6a6058 !important; }
+blockquote p { color: #6a6058 !important; margin-bottom: 0.4em; }
 
-/* ── 15. CALLOUTS ─────────────────────────────────────────────
-   tip  = green tint  (LISTEN)
-   info = orange tint (READ)
-   danger = red tint  (DELETE)
-   ─────────────────────────────────────────────────────────── */
-
+/* ── 15. CALLOUTS ─────────────────────────────────────────────── */
 .callout {
   border-radius: 6px !important;
   border: 1px solid #ddd8d0 !important;
-  background: #f2ede8 !important;
+  background: #f5f2ee !important;
   color: #2a2520 !important;
   padding: 0.9rem 1.2rem !important;
   margin: 1.5em 0 !important;
 }
-
 .callout-title {
   font-family: var(--font-mono) !important;
-  font-size: 0.68em !important;
+  font-size: 0.66em !important;
   font-weight: 500 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.1em !important;
   color: #6a6058 !important;
+  background: transparent !important;
   margin-bottom: 0.4em;
 }
-
 .callout-title-inner {
   font-family: var(--font-mono) !important;
   color: #6a6058 !important;
+  background: transparent !important;
 }
-
-.callout-content,
-.callout-content p,
-.callout-content li {
+.callout-icon { display: inline-flex; align-items: center; margin-right: 0.4em; }
+.callout-content, .callout-content p, .callout-content li {
   font-family: var(--font-body) !important;
   color: #2a2520 !important;
+  background: transparent !important;
 }
-
-/* Callout type tints */
-.callout[data-callout="tip"] {
-  background: rgba(80, 150, 80, 0.07) !important;
-  border-color: rgba(80, 150, 80, 0.3) !important;
-}
-.callout[data-callout="tip"] .callout-title { color: #3a7a3a !important; }
-
-.callout[data-callout="info"] {
-  background: var(--orange-tint) !important;
-  border-color: rgba(200, 90, 24, 0.2) !important;
-}
-.callout[data-callout="info"] .callout-title { color: #8a4a18 !important; }
-
-.callout[data-callout="warning"] {
-  background: rgba(190, 160, 50, 0.07) !important;
-  border-color: rgba(190, 160, 50, 0.3) !important;
-}
-
-.callout[data-callout="danger"] {
-  background: rgba(170, 50, 50, 0.06) !important;
-  border-color: rgba(170, 50, 50, 0.25) !important;
-}
-.callout[data-callout="danger"] .callout-title { color: #8a2020 !important; }
-
-/* Collapsible callout toggle */
+/* Type tints */
+.callout[data-callout="tip"]     { background: rgba(80,150,80,0.07) !important; border-color: rgba(80,150,80,0.3) !important; }
+.callout[data-callout="tip"]     .callout-title { color: #3a7a3a !important; }
+.callout[data-callout="info"]    { background: var(--orange-tint) !important; border-color: rgba(200,90,24,0.2) !important; }
+.callout[data-callout="info"]    .callout-title { color: #8a4a18 !important; }
+.callout[data-callout="warning"] { background: rgba(190,160,50,0.07) !important; border-color: rgba(190,160,50,0.3) !important; }
+.callout[data-callout="danger"]  { background: rgba(170,50,50,0.06) !important; border-color: rgba(170,50,50,0.25) !important; }
+.callout[data-callout="danger"]  .callout-title { color: #8a2020 !important; }
+.callout[data-callout="note"]    { background: #f5f2ee !important; border-color: #ddd8d0 !important; }
+/* The note/default type icons */
 .callout.is-collapsible .callout-title { cursor: pointer; }
 
 /* ── 16. BACKLINKS ───────────────────────────────────────────── */
-
-.backlinks {
-  font-family: var(--font-mono) !important;
-  font-size: 0.8rem !important;
-  color: #a09890 !important;
-  border-top: 1px solid #ddd8d0;
-  padding-top: 1.5em;
-  margin-top: 2em;
-}
-
-.backlink-title {
-  font-size: 0.68rem !important;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #a09890 !important;
-  margin-bottom: 0.5em;
-}
-
-.backlink-card a {
-  color: #6a6058 !important;
-  border-bottom: none !important;
-  transition: color 0.15s;
-}
+.backlinks { font-family: var(--font-mono) !important; font-size: 0.8rem !important; color: #a09890 !important; border-top: 1px solid #ddd8d0; padding-top: 1.5em; margin-top: 2em; }
+.backlink-title { font-size: 0.66rem !important; text-transform: uppercase; letter-spacing: 0.08em; color: #a09890 !important; margin-bottom: 0.5em; }
+.backlink-card a { color: #6a6058 !important; border-bottom: none !important; transition: color 0.15s; }
 .backlink-card a:hover { color: var(--orange) !important; }
 
-/* ── 17. IMAGES ──────────────────────────────────────────────── */
+/* ── 17. MISC ────────────────────────────────────────────────── */
+main.content img, .content img { width: 100% !important; border-radius: 4px; margin: 1.5em 0; display: block; }
+hr { border: none !important; border-top: 1px solid #ddd8d0 !important; margin: 2.5em 0 !important; }
+table { width: 100%; border-collapse: collapse; font-family: var(--font-mono) !important; font-size: 0.82em !important; }
+th { font-weight: 500; border-bottom: 1px solid #ddd8d0; padding: 0.4em 0.8em; text-align: left; color: #2a2520 !important; }
+td { border-bottom: 1px solid #f0ebe4; padding: 0.35em 0.8em; color: #6a6058 !important; }
+.graph { background: #f0ebe4 !important; border: 1px solid #ddd8d0 !important; border-radius: 6px; }
+.graph-title { font-family: var(--font-mono) !important; font-size: 0.66rem !important; color: #a09890 !important; text-transform: uppercase; letter-spacing: 0.08em; }
+.search-box { background: #faf9f7 !important; border: 1px solid #ddd8d0 !important; }
+#term { font-family: var(--font-body) !important; background: #f2ede8 !important; color: #2a2520 !important; border: 1px solid #ddd8d0 !important; }
 
-main.content img,
-.content img {
-  width: 100% !important;
-  border-radius: 4px;
-  margin: 1.5em 0;
-  display: block;
-}
+/* ── 18. HEADER META AREA ────────────────────────────────────── */
+main.content header { margin-bottom: 1.5em; padding-bottom: 1em; border-bottom: 1px solid #ddd8d0; }
+.header-meta { margin-top: 0.6em; }
+.header-tags { display: flex; flex-wrap: wrap; gap: 0.2em; margin-top: 0.4em; }
 
-/* ── 18. HORIZONTAL RULES ────────────────────────────────────── */
-
-hr {
-  border: none !important;
-  border-top: 1px solid #ddd8d0 !important;
-  margin: 2.5em 0 !important;
-}
-
-/* ── 19. TABLES ──────────────────────────────────────────────── */
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: var(--font-mono) !important;
-  font-size: 0.82em !important;
-  color: #6a6058 !important;
-}
-th {
-  font-weight: 500;
-  border-bottom: 1px solid #ddd8d0;
-  padding: 0.4em 0.8em;
-  text-align: left;
-  color: #2a2520 !important;
-}
-td {
-  border-bottom: 1px solid #f0ebe4;
-  padding: 0.35em 0.8em;
-  color: #6a6058 !important;
-}
-
-/* ── 20. GRAPH ───────────────────────────────────────────────── */
-
-.graph {
-  background: #f0ebe4 !important;
-  border: 1px solid #ddd8d0 !important;
-  border-radius: 6px;
-}
-
-.graph-title {
-  font-family: var(--font-mono) !important;
-  font-size: 0.68rem !important;
-  color: #a09890 !important;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-/* ── 21. SEARCH ──────────────────────────────────────────────── */
-
-.search-container {
-  background: rgba(250, 249, 247, 0.97) !important;
-}
-
-.search-box {
-  background: #faf9f7 !important;
-  border: 1px solid #ddd8d0 !important;
-}
-
-#term {
-  font-family: var(--font-body) !important;
-  background: #f2ede8 !important;
-  color: #2a2520 !important;
-  border: 1px solid #ddd8d0 !important;
-}
-
-/* ── 22. HEADER META (title + tags at top of note) ──────────── */
-
-header {
-  margin-bottom: 1.5em;
-  padding-bottom: 1em;
-  border-bottom: 1px solid #ddd8d0;
-}
-
-.header-meta {
-  margin-top: 0.6em;
-}
-
-.header-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.2em;
-  margin-top: 0.4em;
-}
-
-/* ── 23. DARK MODE (genuine prefers-color-scheme) ───────────────
-   For users who explicitly want dark — overrides our light defaults
-   ─────────────────────────────────────────────────────────── */
-
+/* ── 19. DARK MODE ───────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
-  .theme-dark,
-  body.theme-dark {
+  .theme-dark, body.theme-dark {
     --background-primary:         #1c1a18 !important;
     --background-primary-alt:     #252220 !important;
     --background-secondary:       #211f1c !important;
-    --background-secondary-alt:   #282521 !important;
     --background-modifier-border: #383028 !important;
     --text-normal:    #e0dbd3 !important;
     --text-muted:     #8a837c !important;
     --text-faint:     #5a5450 !important;
+    /* Hermès orange holds in dark — warm, works on dark bg */
     --text-accent:    #E07030 !important;
-    --interactive-accent:      #E07030 !important;
-    --link-color:              #E07030 !important;
-    --link-external-color:     #6090c0 !important;
-    --color-base-00: #1c1a18 !important;
-    --color-base-100: #f5f1ec !important;
-    --mono-rgb-0:   0, 0, 0 !important;
-    --mono-rgb-100: 255, 255, 255 !important;
+    --interactive-accent: #E07030 !important;
+    --link-color:         #E07030 !important;
+    --link-external-color: #6090c0 !important;
+    --code-background:    #252220 !important;
+    --mono-rgb-0:   0,0,0 !important; --mono-rgb-100: 255,255,255 !important;
     --highlight-mix-blend-mode: lighten !important;
-
-    --orange:       #E07030;
-    --orange-hover: #F08040;
-    --orange-faint: rgba(224, 112, 48, 0.5);
-    --orange-tint:  rgba(224, 112, 48, 0.07);
-    --orange-tint2: rgba(224, 112, 48, 0.14);
-    --blue-link:    #6090c0;
-    --blue-hover:   #80aad8;
+    --orange: #E07030; --orange-hover: #F08040;
+    --orange-faint: rgba(224,112,48,0.5); --orange-tint: rgba(224,112,48,0.07); --orange-tint2: rgba(224,112,48,0.14);
+    --blue-link: #6090c0; --blue-hover: #80aad8;
   }
-
-  html, body {
-    background-color: #1c1a18 !important;
-    color: #e0dbd3 !important;
-  }
-
-  .filetree-wrapper   { background-color: #211f1c !important; }
-  .filetree-sidebar   { background-color: #211f1c !important; color: #8a837c !important; }
-  .navbar             { background-color: #1c1a18 !important; border-color: #383028 !important; }
-  main.content        { background: #1c1a18 !important; color: #e0dbd3 !important; }
+  html, body { background-color: #1c1a18 !important; color: #e0dbd3 !important; }
+  .filetree-wrapper, .filetree-sidebar { background-color: #211f1c !important; color: #8a837c !important; }
+  .navbar { background-color: #1c1a18 !important; border-color: #383028 !important; }
+  main.content { background: #1c1a18 !important; color: #e0dbd3 !important; }
   h1, h2, h3, h4, h5, h6 { color: #e0dbd3 !important; }
-  p, li               { color: #e0dbd3 !important; }
-  blockquote          { color: #8a837c !important; }
-  blockquote p        { color: #8a837c !important; }
-  .callout            { background: #252220 !important; border-color: #383028 !important; color: #e0dbd3 !important; }
+  h3 { color: #8a837c !important; }
+  p, li { color: #e0dbd3 !important; }
+  strong { color: #e0dbd3 !important; }
+  blockquote, blockquote p { color: #8a837c !important; }
+  .callout { background: #252220 !important; border-color: #383028 !important; color: #e0dbd3 !important; }
+  .callout-title, .callout-title-inner { color: #8a837c !important; }
   .callout-content, .callout-content p { color: #e0dbd3 !important; }
-  code, pre           { background: #252220 !important; color: #8a837c !important; }
-  p code, li code     { background: #252220 !important; color: #8a837c !important; }
-  hr                  { border-color: #383028 !important; }
-  h2                  { border-color: #383028 !important; }
-  mark                { background-color: rgba(224, 112, 48, 0.15) !important; color: #e0dbd3 !important; }
+  pre { background: #252220 !important; color: #8a837c !important; border-color: #383028 !important; }
+  p code, li code { background: transparent !important; color: #5a5450 !important; }
+  mark { background-color: rgba(224,112,48,0.15) !important; color: #e0dbd3 !important; }
+  hr { border-color: #383028 !important; }
+  h2 { border-color: #383028 !important; }
+  .header-tags .tag, .header-tags a.tag { color: rgba(224,112,48,0.5) !important; background: rgba(224,112,48,0.07) !important; border-color: rgba(224,112,48,0.18) !important; }
+  main.content .tag, main.content a.tag { color: #5a5450 !important; border-color: rgba(90,84,80,0.3) !important; }
+  td { color: #8a837c !important; border-color: #383028 !important; }
+  th { color: #e0dbd3 !important; border-color: #383028 !important; }
 }
