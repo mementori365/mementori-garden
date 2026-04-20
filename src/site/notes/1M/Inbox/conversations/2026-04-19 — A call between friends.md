@@ -9,7 +9,7 @@
 
 ### *On finding peace, building thinking teams, and the next beautiful step*
 
-*Sunday, 19. April, 2026 · Da Nang ↔ Hồ Chí Minh City · 48 minutes · Published 20. April, 2026 via JotBird*
+*Sunday, 19. April, 2026 · Da Nang ↔ Hồ Chí Minh City · 48 minutes · Published 20. April, 2026*
 
 ---
 
@@ -77,9 +77,9 @@ They parted warmly. The mountain is still there. The breathing room is still the
 
 ---
 
-> [!info] 📄  READ the full transcript
-> [▶ Jump to the full conversation below](#the-conversation)
-> *Word-for-word · Transcribed by Whisper AI*
+> [!info] 📄  READ the transcript
+> [▶ Scripted summary — below](#the-conversation) · *composed narrative*
+> [▶ Original raw transcript](../../../0M/x/incoming/Call%20with%20Tran%20Minh%20Thu.transcript.md) · *word-for-word · Whisper AI*
 
 ---
 
