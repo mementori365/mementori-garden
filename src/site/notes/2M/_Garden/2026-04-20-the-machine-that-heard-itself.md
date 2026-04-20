@@ -39,7 +39,7 @@ dg-publish: true
 permalink: /notes/2M/_Garden/2026-04-20-the-machine-that-heard-itself/
 ---
 
-![0M/Attachments/6df13cdf2e5366744c98f6e259a88e4c_MD5.jpg](/notes/6df13cdf2e5366744c98f6e259a88e4c-md5jpg/)
+![6df13cdf2e5366744c98f6e259a88e4c_MD5](/img/6df13cdf2e5366744c98f6e259a88e4c_MD5.jpg)
 
 # The machine that heard itself
 
