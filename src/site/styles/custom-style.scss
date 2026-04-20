@@ -35,11 +35,11 @@
 /* ── 2. OVERRIDE .theme-dark VARS (body has this class) ──────── */
 .theme-dark, body.theme-dark {
   color-scheme: light !important;
-  --background-primary:          #faf9f7 !important;
-  --background-primary-alt:      #f2ede8 !important;
-  --background-secondary:        #f0ebe4 !important;
-  --background-secondary-alt:    #ebe5de !important;
-  --background-modifier-border:  #ddd8d0 !important;
+  --background-primary:          #f5ecd7 !important;
+  --background-primary-alt:      #ede0c8 !important;
+  --background-secondary:        #ead8be !important;
+  --background-secondary-alt:    #e4d0ac !important;
+  --background-modifier-border:  #d8cbb0 !important;
   --background-modifier-hover:   rgba(200,90,24,0.06) !important;
   --text-normal:    #2a2520 !important;
   --text-muted:     #6a6058 !important;
@@ -49,13 +49,13 @@
   --text-accent-hover: #A84A12 !important;
   --interactive-accent:       #C85A18 !important;
   --interactive-accent-hover: #A84A12 !important;
-  --interactive-normal:       #f0ebe4 !important;
-  --interactive-hover:        #ebe5de !important;
+  --interactive-normal:       #ead8be !important;
+  --interactive-hover:        #e4d0ac !important;
   --link-color:              #C85A18 !important;
   --link-color-hover:        #A84A12 !important;
   --link-unresolved-color:   #a09890 !important;
   --link-external-color:     #3a6090 !important;
-  --code-background:  #f2ede8 !important;
+  --code-background:  #ede0c8 !important;
   --code-normal:      #6a6058 !important;
   --callout-default:  200, 90, 24 !important;
   --callout-tip:      100, 160, 100 !important;
@@ -63,10 +63,10 @@
   --callout-warning:  200, 170, 60 !important;
   --callout-danger:   180, 60, 60 !important;
   /* base color scale — light palette */
-  --color-base-00: #faf9f7 !important; --color-base-05: #f5f1ec !important;
-  --color-base-10: #f0ebe4 !important; --color-base-20: #ebe5de !important;
-  --color-base-25: #e5ded6 !important; --color-base-30: #ddd8d0 !important;
-  --color-base-35: #c8c2ba !important; --color-base-40: #a09890 !important;
+  --color-base-00: #f5ecd7 !important; --color-base-05: #f0e5ce !important;
+  --color-base-10: #ead8be !important; --color-base-20: #e4d0ac !important;
+  --color-base-25: #e0d1b6 !important; --color-base-30: #d8cbb0 !important;
+  --color-base-35: #c3b59a !important; --color-base-40: #a09890 !important;
   --color-base-50: #6a6058 !important; --color-base-60: #4a4038 !important;
   --color-base-70: #2a2520 !important; --color-base-100: #1a1510 !important;
   --mono-rgb-0:   255, 255, 255 !important;
@@ -76,7 +76,7 @@
 
 /* ── 3. BASE ─────────────────────────────────────────────────── */
 html, body {
-  background-color: #faf9f7 !important;
+  background-color: #f5ecd7 !important;
   color: #2a2520 !important;
   font-family: var(--font-body) !important;
   font-size: 17px !important;
@@ -102,7 +102,7 @@ h2 {
   font-weight: 400 !important;
   margin-top: 2.5em;
   padding-bottom: 0.3em;
-  border-bottom: 1px solid #ddd8d0 !important;
+  border-bottom: 1px solid #d8cbb0 !important;
 }
 h3 {
   font-size: 1.05rem !important;
@@ -173,9 +173,9 @@ pre {
   display: block;
   padding: 1em 1.2em;
   overflow-x: auto;
-  background: #f2ede8 !important;
+  background: #ede0c8 !important;
   color: #6a6058 !important;
-  border: 1px solid #ddd8d0;
+  border: 1px solid #d8cbb0;
   border-radius: 4px;
   line-height: 1.6;
 }
@@ -285,23 +285,23 @@ mark {
 /* ── 10. CONTENT CONTAINER ──────────────────────────────────── */
 main.content, .content.cm-s-obsidian {
   max-width: var(--content-width);
-  background: #faf9f7 !important;
+  background: #f5ecd7 !important;
   color: #2a2520 !important;
   font-family: var(--font-body) !important;
 }
 
 /* ── 11. NAVBAR ──────────────────────────────────────────────── */
 .navbar, nav.navbar {
-  background-color: #faf9f7 !important;
-  border-bottom: 1px solid #ddd8d0 !important;
+  background-color: #f5ecd7 !important;
+  border-bottom: 1px solid #d8cbb0 !important;
 }
 
 /* ── 12. FILETREE SIDEBAR ────────────────────────────────────── */
 .filetree-wrapper {
-  background-color: #f0ebe4 !important;
+  background-color: #ead8be !important;
 }
 .filetree-sidebar, nav.filetree-sidebar {
-  background-color: #f0ebe4 !important;
+  background-color: #ead8be !important;
   color: #6a6058 !important;
 }
 /* Folder names — faded mono, uppercase */
@@ -338,7 +338,7 @@ a.filename:hover, .notelink:hover a.filename { color: var(--orange) !important; 
   font-size: 0.74rem !important;
   color: #a09890 !important;
   background: transparent !important;
-  border-left: 1px solid #ddd8d0 !important;
+  border-left: 1px solid #d8cbb0 !important;
 }
 .toc-title, .toc-title-container {
   font-family: var(--font-mono) !important;
@@ -367,8 +367,8 @@ blockquote p { color: #6a6058 !important; margin-bottom: 0.4em; }
 /* ── 15. CALLOUTS ─────────────────────────────────────────────── */
 .callout {
   border-radius: 6px !important;
-  border: 1px solid #ddd8d0 !important;
-  background: #f5f2ee !important;
+  border: 1px solid #d8cbb0 !important;
+  background: #f0e5ce !important;
   color: #2a2520 !important;
   padding: 0.9rem 1.2rem !important;
   margin: 1.5em 0 !important;
@@ -402,29 +402,29 @@ blockquote p { color: #6a6058 !important; margin-bottom: 0.4em; }
 .callout[data-callout="warning"] { background: rgba(190,160,50,0.07) !important; border-color: rgba(190,160,50,0.3) !important; }
 .callout[data-callout="danger"]  { background: rgba(170,50,50,0.06) !important; border-color: rgba(170,50,50,0.25) !important; }
 .callout[data-callout="danger"]  .callout-title { color: #8a2020 !important; }
-.callout[data-callout="note"]    { background: #f5f2ee !important; border-color: #ddd8d0 !important; }
+.callout[data-callout="note"]    { background: #f0e5ce !important; border-color: #d8cbb0 !important; }
 /* The note/default type icons */
 .callout.is-collapsible .callout-title { cursor: pointer; }
 
 /* ── 16. BACKLINKS ───────────────────────────────────────────── */
-.backlinks { font-family: var(--font-mono) !important; font-size: 0.8rem !important; color: #a09890 !important; border-top: 1px solid #ddd8d0; padding-top: 1.5em; margin-top: 2em; }
+.backlinks { font-family: var(--font-mono) !important; font-size: 0.8rem !important; color: #a09890 !important; border-top: 1px solid #d8cbb0; padding-top: 1.5em; margin-top: 2em; }
 .backlink-title { font-size: 0.66rem !important; text-transform: uppercase; letter-spacing: 0.08em; color: #a09890 !important; margin-bottom: 0.5em; }
 .backlink-card a { color: #6a6058 !important; border-bottom: none !important; transition: color 0.15s; }
 .backlink-card a:hover { color: var(--orange) !important; }
 
 /* ── 17. MISC ────────────────────────────────────────────────── */
 main.content img, .content img { width: 100% !important; border-radius: 4px; margin: 1.5em 0; display: block; }
-hr { border: none !important; border-top: 1px solid #ddd8d0 !important; margin: 2.5em 0 !important; }
+hr { border: none !important; border-top: 1px solid #d8cbb0 !important; margin: 2.5em 0 !important; }
 table { width: 100%; border-collapse: collapse; font-family: var(--font-mono) !important; font-size: 0.82em !important; }
-th { font-weight: 500; border-bottom: 1px solid #ddd8d0; padding: 0.4em 0.8em; text-align: left; color: #2a2520 !important; }
-td { border-bottom: 1px solid #f0ebe4; padding: 0.35em 0.8em; color: #6a6058 !important; }
-.graph { background: #f0ebe4 !important; border: 1px solid #ddd8d0 !important; border-radius: 6px; }
+th { font-weight: 500; border-bottom: 1px solid #d8cbb0; padding: 0.4em 0.8em; text-align: left; color: #2a2520 !important; }
+td { border-bottom: 1px solid #ead8be; padding: 0.35em 0.8em; color: #6a6058 !important; }
+.graph { background: #ead8be !important; border: 1px solid #d8cbb0 !important; border-radius: 6px; }
 .graph-title { font-family: var(--font-mono) !important; font-size: 0.66rem !important; color: #a09890 !important; text-transform: uppercase; letter-spacing: 0.08em; }
-.search-box { background: #faf9f7 !important; border: 1px solid #ddd8d0 !important; }
-#term { font-family: var(--font-body) !important; background: #f2ede8 !important; color: #2a2520 !important; border: 1px solid #ddd8d0 !important; }
+.search-box { background: #f5ecd7 !important; border: 1px solid #d8cbb0 !important; }
+#term { font-family: var(--font-body) !important; background: #ede0c8 !important; color: #2a2520 !important; border: 1px solid #d8cbb0 !important; }
 
 /* ── 18. HEADER META AREA ────────────────────────────────────── */
-main.content header { margin-bottom: 1.5em; padding-bottom: 1em; border-bottom: 1px solid #ddd8d0; }
+main.content header { margin-bottom: 1.5em; padding-bottom: 1em; border-bottom: 1px solid #d8cbb0; }
 .header-meta { margin-top: 0.6em; }
 .header-tags { display: flex; flex-wrap: wrap; gap: 0.2em; margin-top: 0.4em; }
 
