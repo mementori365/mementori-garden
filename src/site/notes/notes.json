@@ -3,7 +3,7 @@
     "templateEngineOverride": "md",
     "dgShowLocalGraph": false,
     "dgShowBacklinks": true,
-    "dgShowFileTree": false,
+    "dgShowFileTree": true,
     "dgShowToc": true,
     "dgEnableSearch": true,
     "dgShowTags": true,
