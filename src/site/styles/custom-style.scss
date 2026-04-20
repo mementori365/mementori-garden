@@ -1,94 +1,243 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap');
 
-/* ── Mementori Garden — IBM Plex typography ─────────────────── */
+/* ═══════════════════════════════════════════════════════════════
+   MEMENTORI GARDEN · v1.3
+   IBM Plex Serif (headlines) · Sans (body) · Mono (meta)
+   Hermès orange accent · Warm off-white ground
+   Da Nang, April 2026
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Design tokens ────────────────────────────────────────────── */
 :root {
   --font-text:    'IBM Plex Sans',  system-ui, sans-serif;
   --font-heading: 'IBM Plex Serif', Georgia, serif;
   --font-mono:    'IBM Plex Mono',  'Courier New', monospace;
+
+  /* Warm off-white ground */
   --bg:           #faf9f7;
   --bg-alt:       #f2ede8;
+  --bg-sidebar:   #f0ebe4;
+
+  /* Ink */
   --text:         #1a1816;
   --text-muted:   #5a5450;
-  --accent:       #3d5a80;
+  --text-faint:   #8a837c;
+
+  /* Hermès orange — primary accent */
+  --accent:       #D4601A;
+  --accent-hover: #B85015;
+  --accent-soft:  #f5ede6;   /* very light orange tint for highlights */
+
+  /* Warm terracotta — blockquote, secondary */
   --accent-warm:  #9c6b4e;
+
+  /* Structure */
   --border:       #ddd8d0;
   --content-width: 720px;
+  --sidebar-width: 260px;
   --line-height:  1.82;
-  /* Override Digital Garden base vars */
-  --background-primary:         #faf9f7 !important;
-  --background-secondary:       #f2ede8 !important;
-  --background-primary-alt:     #f2ede8 !important;
-  --text-normal:                #1a1816 !important;
-  --text-muted:                 #5a5450 !important;
-  --text-faint:                 #8a837c !important;
-  --text-on-accent:             #ffffff !important;
-  --interactive-accent:         #3d5a80 !important;
-  --link-color:                 #3d5a80 !important;
+
+  /* Override Digital Garden base theme vars */
+  --background-primary:         #faf9f7;
+  --background-secondary:       #f0ebe4;
+  --background-primary-alt:     #f2ede8;
+  --background-modifier-border: #ddd8d0;
+  --text-normal:                #1a1816;
+  --text-muted:                 #5a5450;
+  --text-faint:                 #8a837c;
+  --text-on-accent:             #ffffff;
+  --interactive-accent:         #D4601A;
+  --interactive-accent-hover:   #B85015;
+  --link-color:                 #D4601A;
+  --link-color-hover:           #B85015;
+  --link-external-color:        #D4601A;
 }
 
-/* Force light background and dark text everywhere */
-body, html,
-.site-body, .sidebar, .content, .markdown-preview-view,
-.callout, .callout-content, .nav-folder, .nav-file,
-.search-result, .backlink-pane {
+/* ── Reset & base ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
   background-color: var(--bg) !important;
   color: var(--text) !important;
-}
-
-body {
   font-family: var(--font-text) !important;
-  font-size: 17.5px !important;
+  font-size: 17px !important;
   line-height: var(--line-height) !important;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── Headings — IBM Plex Serif ──────────────────────────────── */
+/* ── Sidebar ──────────────────────────────────────────────────── */
+.sidebar,
+.sidebar-left,
+.sidebar-right,
+.nav-folder,
+.nav-folder-title,
+.nav-file,
+.nav-file-title,
+.site-sidebar,
+[class*="sidebar"] {
+  background-color: var(--bg-sidebar) !important;
+  color: var(--text) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.78rem !important;
+}
+
+/* Sidebar links */
+.sidebar a,
+.nav-file-title,
+.nav-folder-title,
+[class*="sidebar"] a {
+  color: var(--text-muted) !important;
+  text-decoration: none !important;
+}
+.sidebar a:hover,
+.nav-file-title:hover,
+[class*="sidebar"] a:hover {
+  color: var(--accent) !important;
+}
+
+/* Active sidebar item */
+.nav-file-title.is-active,
+.nav-file.is-active .nav-file-title {
+  color: var(--accent) !important;
+  font-weight: 500;
+}
+
+/* Table of contents (right sidebar) */
+.table-of-contents,
+.toc,
+#toc,
+[class*="toc"] {
+  background-color: var(--bg-sidebar) !important;
+  color: var(--text-muted) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.75rem !important;
+  border-left: 2px solid var(--border);
+  padding-left: 1rem;
+}
+.table-of-contents a,
+.toc a,
+[class*="toc"] a {
+  color: var(--text-muted) !important;
+  text-decoration: none !important;
+  display: block;
+  padding: 0.15em 0;
+  border-bottom: none !important;
+  transition: color 0.15s;
+}
+.table-of-contents a:hover,
+.toc a:hover {
+  color: var(--accent) !important;
+}
+/* Current section highlight */
+.table-of-contents a.active,
+.toc a.active {
+  color: var(--accent) !important;
+  font-weight: 500;
+}
+
+/* Site header / nav */
+.site-header,
+.site-nav,
+.navbar,
+.home-link,
+.site-name {
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+  border-bottom: 1px solid var(--border);
+}
+.site-name, .home-link {
+  font-family: var(--font-heading) !important;
+  font-size: 1.1rem !important;
+  font-weight: 600;
+  color: var(--text) !important;
+  letter-spacing: -0.01em;
+}
+
+/* ── Headings — IBM Plex Serif ────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading) !important;
   color: var(--text) !important;
+  font-weight: 600;
   line-height: 1.25;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
 }
-h1 { font-size: 2.4rem !important; font-weight: 700; margin-bottom: 0.2em; }
-h2 { font-size: 1.55rem !important; font-weight: 600; margin-top: 2.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
-h3 { font-size: 1.15rem !important; font-style: italic; font-weight: 400; margin-top: 2em; color: var(--text-muted) !important; }
-h4 { font-size: 1rem !important; font-weight: 600; }
+h1 { font-size: 2.3rem !important; font-weight: 700; margin-bottom: 0.2em; }
+h2 { font-size: 1.5rem !important;  margin-top: 2.5em; padding-bottom: 0.3em; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.1rem !important;  font-style: italic; font-weight: 400; margin-top: 2em; color: var(--text-muted) !important; }
+h4 { font-size: 1rem !important;    font-weight: 600; }
 
-/* ── Meta / Mono elements ───────────────────────────────────── */
-code, pre, kbd, .tag, time, .date, .location,
-.frontmatter-container, .metadata-property {
+/* ── Body text ────────────────────────────────────────────────── */
+p  { margin-bottom: 1.4em; color: var(--text) !important; }
+li { margin-bottom: 0.35em; line-height: 1.7; color: var(--text) !important; }
+strong { color: var(--text) !important; font-weight: 600; }
+
+/* ── Mono: all meta information ───────────────────────────────── */
+code, pre, kbd,
+.tag, time, .date, .location,
+.frontmatter-container,
+.metadata-property, .metadata-property-key, .metadata-property-value {
   font-family: var(--font-mono) !important;
-  font-size: 0.82em;
+  font-size: 0.8em;
   color: var(--text-muted) !important;
 }
+pre { background: var(--bg-alt) !important; padding: 1em; border-radius: 4px; overflow-x: auto; }
 
-/* ── Navigation ─────────────────────────────────────────────── */
-nav, .site-name, .navbar, .nav-header,
-.site-header, .home-link, .breadcrumb {
-  font-family: var(--font-mono) !important;
-  font-size: 0.82em;
-  color: var(--text-muted) !important;
-  background: var(--bg) !important;
+/* ── Links — Hermès orange ────────────────────────────────────── */
+a {
+  color: var(--accent) !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s, color 0.15s;
+}
+a:hover {
+  color: var(--accent-hover) !important;
+  border-bottom-color: var(--accent-hover);
 }
 
-/* ── Links ──────────────────────────────────────────────────── */
-a { color: var(--accent) !important; text-decoration: none !important; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
-a:hover { border-bottom-color: var(--accent) !important; }
+/* ── Highlighted text (==mark==) — warm orange tint ────────────── */
+mark {
+  background-color: var(--accent-soft) !important;
+  color: var(--text) !important;
+  border-radius: 2px;
+  padding: 0.05em 0.15em;
+}
 
-/* ── Body content width ─────────────────────────────────────── */
-.content, article, .markdown-preview-view, .site-content {
+/* ── Tags — pill style ────────────────────────────────────────── */
+.tag, a.tag {
+  font-family: var(--font-mono) !important;
+  font-size: 0.72em !important;
+  color: var(--text-muted) !important;
+  background: var(--bg-alt) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 99px;
+  padding: 0.1em 0.6em;
+  text-decoration: none !important;
+  border-bottom: 1px solid var(--border) !important;
+  display: inline-block;
+  margin: 0.1em 0.2em;
+}
+.tag:hover, a.tag:hover {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  background: var(--accent-soft) !important;
+}
+
+/* ── Content container ────────────────────────────────────────── */
+.content,
+article,
+.markdown-preview-view,
+.site-content,
+.note-content {
   max-width: var(--content-width);
   margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+  color: var(--text) !important;
 }
 
-p { margin-bottom: 1.4em; color: var(--text) !important; }
-
-/* ── Blockquotes ────────────────────────────────────────────── */
+/* ── Blockquotes — left border, italic, muted ─────────────────── */
 blockquote {
   border-left: 3px solid var(--accent-warm) !important;
-  border-right: none !important;
-  border-top: none !important;
-  border-bottom: none !important;
+  border-right: none !important; border-top: none !important; border-bottom: none !important;
   margin: 2em 0 !important;
   padding: 0.4em 1.5em !important;
   background: transparent !important;
@@ -99,41 +248,60 @@ blockquote {
 }
 blockquote p { color: var(--text-muted) !important; margin-bottom: 0.4em; }
 
-/* ── Callouts ───────────────────────────────────────────────── */
+/* ── Callouts ─────────────────────────────────────────────────── */
 .callout {
-  border-radius: 4px !important;
+  border-radius: 6px !important;
   border: 1px solid var(--border) !important;
   background: var(--bg-alt) !important;
   color: var(--text) !important;
-  padding: 1rem 1.25rem;
+  padding: 0.9rem 1.2rem;
   margin: 1.5em 0;
 }
-.callout-content, .callout p, .callout li, .callout a { color: var(--text) !important; }
+.callout-content, .callout p, .callout li { color: var(--text) !important; }
+.callout a { color: var(--accent) !important; }
 .callout-title, .callout-title-inner {
   font-family: var(--font-mono) !important;
-  font-size: 0.76em !important;
+  font-size: 0.72em !important;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.1em;
   color: var(--text-muted) !important;
 }
+/* Tip = green tint */
+.callout[data-callout="tip"]     { background: #f0f5f0 !important; border-color: #a8c4a8 !important; }
+/* Info = orange soft tint */
+.callout[data-callout="info"]    { background: var(--accent-soft) !important; border-color: #e8b898 !important; }
+/* Warning = amber tint */
+.callout[data-callout="warning"] { background: #fdf6ec !important; border-color: #e8c87a !important; }
+/* Danger = red tint */
+.callout[data-callout="danger"]  { background: #fdf0f0 !important; border-color: #e8a0a0 !important; }
 
-/* ── Misc ───────────────────────────────────────────────────── */
-img  { width: 100%; border-radius: 4px; margin: 1.5em 0; }
-hr   { border: none !important; border-top: 1px solid var(--border) !important; margin: 2.5em 0; }
-li   { margin-bottom: 0.35em; line-height: 1.7; color: var(--text) !important; }
-strong { color: var(--text) !important; font-weight: 600; }
-em   { color: inherit; }
+/* ── Images ───────────────────────────────────────────────────── */
+img { width: 100%; border-radius: 4px; margin: 1.5em 0; display: block; }
 
-/* ── Dark mode ──────────────────────────────────────────────── */
+/* ── Dividers ─────────────────────────────────────────────────── */
+hr { border: none !important; border-top: 1px solid var(--border) !important; margin: 2.5em 0; }
+
+/* ── Dark mode ────────────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #1c1a18; --bg-alt: #242220; --text: #e6e0d8;
-    --text-muted: #8a837c; --border: #333028;
-    --accent: #7da5d0; --accent-warm: #c49a7a;
-    --background-primary:     #1c1a18 !important;
-    --background-secondary:   #242220 !important;
-    --text-normal:            #e6e0d8 !important;
+    --bg:          #1c1a18;
+    --bg-alt:      #252220;
+    --bg-sidebar:  #211f1c;
+    --text:        #e6e0d8;
+    --text-muted:  #8a837c;
+    --text-faint:  #5a5450;
+    --accent:      #E8711A;
+    --accent-hover:#F08030;
+    --accent-soft: #2d2318;
+    --border:      #383028;
+    --background-primary:   #1c1a18;
+    --background-secondary: #211f1c;
+    --text-normal:          #e6e0d8;
+    --link-color:           #E8711A;
   }
-  body, html, .site-body, .content, .callout { background-color: var(--bg) !important; color: var(--text) !important; }
+  .callout[data-callout="tip"]     { background: #1a2a1a !important; border-color: #3a5a3a !important; }
+  .callout[data-callout="info"]    { background: #2a1e14 !important; border-color: #5a3a20 !important; }
+  .callout[data-callout="warning"] { background: #2a2410 !important; border-color: #5a4a20 !important; }
+  .callout[data-callout="danger"]  { background: #2a1414 !important; border-color: #5a2020 !important; }
 }
