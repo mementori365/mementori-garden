@@ -15,6 +15,7 @@ dg-publish: true
 gdrive_url: "https://drive.google.com/file/d/1sTBLk7Y1y4irdu2GpTZQd1QhZ1QtxY04/view?usp=sharing"
 gdrive_file_id: "1sTBLk7Y1y4irdu2GpTZQd1QhZ1QtxY04"
 
+permalink: /notes/0M/x/incoming/call-with-tran-minh-thutranscript/
 ---
 
 # Transcript — Call with Tran Minh Thu
