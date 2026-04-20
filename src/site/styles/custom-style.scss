@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap');
+
+/* ── Mementori Garden — IBM Plex typography ─────────────────── */
+:root {
+  --font-text:    'IBM Plex Sans',  system-ui, sans-serif;
+  --font-heading: 'IBM Plex Serif', Georgia, serif;
+  --font-mono:    'IBM Plex Mono',  'Courier New', monospace;
+  --bg:           #faf9f7;
+  --bg-alt:       #f4f2ee;
+  --text:         #1a1816;
+  --text-muted:   #6b6560;
+  --accent:       #3d5a80;
+  --accent-warm:  #9c6b4e;
+  --border:       #e0dcd5;
+  --content-width: 720px;
+  --line-height:  1.82;
+}
+
+body {
+  font-family: var(--font-text) !important;
+  font-size: 17.5px !important;
+  line-height: var(--line-height) !important;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading) !important;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 2.4rem !important; margin-bottom: 0.25em; }
+h2 { font-size: 1.55rem !important; margin-top: 2.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+h3 { font-size: 1.15rem !important; font-style: italic; font-weight: 400; margin-top: 2em; color: var(--text-muted); }
+
+code, pre, kbd, .tag {
+  font-family: var(--font-mono) !important;
+  font-size: 0.82em;
+}
+
+.cm-s-obsidian, .markdown-rendered, article, .content, .markdown-preview-view {
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+
+p { margin-bottom: 1.4em; }
+
+blockquote {
+  border-left: 3px solid var(--accent-warm) !important;
+  margin: 2em 0;
+  padding: 0.5em 1.5em;
+  color: var(--text-muted);
+  font-family: var(--font-heading) !important;
+  font-style: italic;
+  font-size: 1.05em;
+  background: none !important;
+}
+
+.callout {
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  padding: 1rem 1.25rem;
+  margin: 1.5em 0;
+}
+.callout-title {
+  font-family: var(--font-mono) !important;
+  font-size: 0.76em;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+a:hover { border-bottom-color: var(--accent); }
+
+img { width: 100%; border-radius: 4px; margin: 1.5em 0; }
+hr  { border: none; border-top: 1px solid var(--border); margin: 2.5em 0; }
+li  { margin-bottom: 0.35em; line-height: 1.7; }
+
+nav, .site-name { font-family: var(--font-mono) !important; font-size: 0.82em; }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1816; --bg-alt: #222019; --text: #e8e4dd;
+    --text-muted: #8a857e; --border: #333028;
+    --accent: #7da5d0; --accent-warm: #c49a7a;
+  }
+}
