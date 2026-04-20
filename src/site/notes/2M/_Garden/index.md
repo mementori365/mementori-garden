@@ -27,4 +27,4 @@ Records of real conversations — with listening links, full transcripts, and th
 
 ---
 
-*Mementori · Da Nang · [open source](/notes/mementori-garden/)*
+*Mementori · Da Nang · [open source](https://github.com/mementori365/mementori-garden)*
