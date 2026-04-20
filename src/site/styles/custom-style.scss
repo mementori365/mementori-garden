@@ -6,87 +6,134 @@
   --font-heading: 'IBM Plex Serif', Georgia, serif;
   --font-mono:    'IBM Plex Mono',  'Courier New', monospace;
   --bg:           #faf9f7;
-  --bg-alt:       #f4f2ee;
+  --bg-alt:       #f2ede8;
   --text:         #1a1816;
-  --text-muted:   #6b6560;
+  --text-muted:   #5a5450;
   --accent:       #3d5a80;
   --accent-warm:  #9c6b4e;
-  --border:       #e0dcd5;
+  --border:       #ddd8d0;
   --content-width: 720px;
   --line-height:  1.82;
+  /* Override Digital Garden base vars */
+  --background-primary:         #faf9f7 !important;
+  --background-secondary:       #f2ede8 !important;
+  --background-primary-alt:     #f2ede8 !important;
+  --text-normal:                #1a1816 !important;
+  --text-muted:                 #5a5450 !important;
+  --text-faint:                 #8a837c !important;
+  --text-on-accent:             #ffffff !important;
+  --interactive-accent:         #3d5a80 !important;
+  --link-color:                 #3d5a80 !important;
+}
+
+/* Force light background and dark text everywhere */
+body, html,
+.site-body, .sidebar, .content, .markdown-preview-view,
+.callout, .callout-content, .nav-folder, .nav-file,
+.search-result, .backlink-pane {
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
 }
 
 body {
   font-family: var(--font-text) !important;
   font-size: 17.5px !important;
   line-height: var(--line-height) !important;
-  color: var(--text);
-  background: var(--bg);
   -webkit-font-smoothing: antialiased;
 }
 
+/* ── Headings — IBM Plex Serif ──────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading) !important;
-  font-weight: 600;
+  color: var(--text) !important;
   line-height: 1.25;
   letter-spacing: -0.01em;
 }
+h1 { font-size: 2.4rem !important; font-weight: 700; margin-bottom: 0.2em; }
+h2 { font-size: 1.55rem !important; font-weight: 600; margin-top: 2.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+h3 { font-size: 1.15rem !important; font-style: italic; font-weight: 400; margin-top: 2em; color: var(--text-muted) !important; }
+h4 { font-size: 1rem !important; font-weight: 600; }
 
-h1 { font-size: 2.4rem !important; margin-bottom: 0.25em; }
-h2 { font-size: 1.55rem !important; margin-top: 2.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
-h3 { font-size: 1.15rem !important; font-style: italic; font-weight: 400; margin-top: 2em; color: var(--text-muted); }
-
-code, pre, kbd, .tag {
+/* ── Meta / Mono elements ───────────────────────────────────── */
+code, pre, kbd, .tag, time, .date, .location,
+.frontmatter-container, .metadata-property {
   font-family: var(--font-mono) !important;
   font-size: 0.82em;
+  color: var(--text-muted) !important;
 }
 
-.cm-s-obsidian, .markdown-rendered, article, .content, .markdown-preview-view {
+/* ── Navigation ─────────────────────────────────────────────── */
+nav, .site-name, .navbar, .nav-header,
+.site-header, .home-link, .breadcrumb {
+  font-family: var(--font-mono) !important;
+  font-size: 0.82em;
+  color: var(--text-muted) !important;
+  background: var(--bg) !important;
+}
+
+/* ── Links ──────────────────────────────────────────────────── */
+a { color: var(--accent) !important; text-decoration: none !important; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+a:hover { border-bottom-color: var(--accent) !important; }
+
+/* ── Body content width ─────────────────────────────────────── */
+.content, article, .markdown-preview-view, .site-content {
   max-width: var(--content-width);
   margin: 0 auto;
 }
 
-p { margin-bottom: 1.4em; }
+p { margin-bottom: 1.4em; color: var(--text) !important; }
 
+/* ── Blockquotes ────────────────────────────────────────────── */
 blockquote {
   border-left: 3px solid var(--accent-warm) !important;
-  margin: 2em 0;
-  padding: 0.5em 1.5em;
-  color: var(--text-muted);
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  margin: 2em 0 !important;
+  padding: 0.4em 1.5em !important;
+  background: transparent !important;
+  color: var(--text-muted) !important;
   font-family: var(--font-heading) !important;
   font-style: italic;
   font-size: 1.05em;
-  background: none !important;
 }
+blockquote p { color: var(--text-muted) !important; margin-bottom: 0.4em; }
 
+/* ── Callouts ───────────────────────────────────────────────── */
 .callout {
-  border-radius: 4px;
-  border: 1px solid var(--border);
-  background: var(--bg-alt);
+  border-radius: 4px !important;
+  border: 1px solid var(--border) !important;
+  background: var(--bg-alt) !important;
+  color: var(--text) !important;
   padding: 1rem 1.25rem;
   margin: 1.5em 0;
 }
-.callout-title {
+.callout-content, .callout p, .callout li, .callout a { color: var(--text) !important; }
+.callout-title, .callout-title-inner {
   font-family: var(--font-mono) !important;
-  font-size: 0.76em;
+  font-size: 0.76em !important;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.09em;
+  color: var(--text-muted) !important;
 }
 
-a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
-a:hover { border-bottom-color: var(--accent); }
+/* ── Misc ───────────────────────────────────────────────────── */
+img  { width: 100%; border-radius: 4px; margin: 1.5em 0; }
+hr   { border: none !important; border-top: 1px solid var(--border) !important; margin: 2.5em 0; }
+li   { margin-bottom: 0.35em; line-height: 1.7; color: var(--text) !important; }
+strong { color: var(--text) !important; font-weight: 600; }
+em   { color: inherit; }
 
-img { width: 100%; border-radius: 4px; margin: 1.5em 0; }
-hr  { border: none; border-top: 1px solid var(--border); margin: 2.5em 0; }
-li  { margin-bottom: 0.35em; line-height: 1.7; }
-
-nav, .site-name { font-family: var(--font-mono) !important; font-size: 0.82em; }
-
+/* ── Dark mode ──────────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #1a1816; --bg-alt: #222019; --text: #e8e4dd;
-    --text-muted: #8a857e; --border: #333028;
+    --bg: #1c1a18; --bg-alt: #242220; --text: #e6e0d8;
+    --text-muted: #8a837c; --border: #333028;
     --accent: #7da5d0; --accent-warm: #c49a7a;
+    --background-primary:     #1c1a18 !important;
+    --background-secondary:   #242220 !important;
+    --text-normal:            #e6e0d8 !important;
   }
+  body, html, .site-body, .content, .callout { background-color: var(--bg) !important; color: var(--text) !important; }
 }
