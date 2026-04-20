@@ -34,7 +34,7 @@ jotbird_expires: 2026-05-19
 dg-publish: true
 ---
 
-![Mountains and mist — Da Nang, April 2026](https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=80)
+![0M/Attachments/de908191b10eec2fb0200626a383ead5_MD5.jpg](/notes/0mattachmentsde908191b10eec2fb0200626a383ead5-md5jpg)
 
 # A call between friends
 
