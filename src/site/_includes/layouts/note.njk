@@ -43,11 +43,25 @@ permalink: "{{ page.filePathStem }}/"
               {% endfor %}
             </div>
           {% endif %}
-          {%- set datelineStr = "" -%}
-          {%- if day -%}{%- set datelineStr = day -%}{%- endif -%}
-          {%- if location -%}{%- if datelineStr -%}{%- set datelineStr = datelineStr + "  ·  " + location -%}{%- else -%}{%- set datelineStr = location -%}{%- endif -%}{%- endif -%}
-          {%- if datelineStr -%}
-          <div class="header-dateline">{{ datelineStr }}</div>
+          {%- set metaStr = "" -%}
+          {%- if day -%}{%- set metaStr = day -%}{%- endif -%}
+          {%- if location -%}{%- if metaStr -%}{%- set metaStr = metaStr + "  ·  " + location -%}{%- else -%}{%- set metaStr = location -%}{%- endif -%}{%- endif -%}
+          {%- if participants -%}{%- set participantsStr = participants | join(' + ') -%}{%- if metaStr -%}{%- set metaStr = metaStr + "  ·  " + participantsStr -%}{%- else -%}{%- set metaStr = participantsStr -%}{%- endif -%}{%- endif -%}
+          {%- if duration -%}{%- if metaStr -%}{%- set metaStr = metaStr + "  ·  " + duration + " min" -%}{%- else -%}{%- set metaStr = duration + " min" -%}{%- endif -%}{%- endif -%}
+          {%- if languages -%}{%- set langStr = languages | join(' · ') -%}{%- if metaStr -%}{%- set metaStr = metaStr + "  ·  " + langStr -%}{%- else -%}{%- set metaStr = langStr -%}{%- endif -%}{%- elif language -%}{%- if metaStr -%}{%- set metaStr = metaStr + "  ·  " + language -%}{%- else -%}{%- set metaStr = language -%}{%- endif -%}{%- endif -%}
+          {%- if published_by -%}{%- if metaStr -%}{%- set metaStr = metaStr + "  ·  Published by " + published_by -%}{%- else -%}{%- set metaStr = "Published by " + published_by -%}{%- endif -%}{%- endif -%}
+          {%- if metaStr -%}
+          <div class="header-details">{{ metaStr }}</div>
+          {%- endif -%}
+          {%- if meta.timestampSettings.showCreated or meta.timestampSettings.showUpdated -%}
+          <div class="timestamps">
+            {%- if meta.timestampSettings.showCreated and created -%}
+            <div><i data-lucide="calendar-plus"></i> <span class="human-date" data-date="{{created}}"></span></div>
+            {%- endif -%}
+            {%- if meta.timestampSettings.showUpdated and updated -%}
+            <div><i data-lucide="calendar-clock"></i> <span class="human-date" data-date="{{updated}}"></span></div>
+            {%- endif -%}
+          </div>
           {%- endif -%}
         </div>
       {% for imp in dynamics.common.header %}
@@ -57,14 +71,7 @@ permalink: "{{ page.filePathStem }}/"
         {% include imp %}
       {% endfor %}
       </header>
-      {%- set secStr = "" -%}
-      {%- if participants -%}{%- set secStr = participants | join(' + ') -%}{%- endif -%}
-      {%- if duration -%}{%- if secStr -%}{%- set secStr = secStr + "  ·  " + duration + " min" -%}{%- else -%}{%- set secStr = duration + " min" -%}{%- endif -%}{%- endif -%}
-      {%- if languages -%}{%- set langStr = languages | join(' · ') -%}{%- if secStr -%}{%- set secStr = secStr + "  ·  " + langStr -%}{%- else -%}{%- set secStr = langStr -%}{%- endif -%}{%- elif language -%}{%- if secStr -%}{%- set secStr = secStr + "  ·  " + language -%}{%- else -%}{%- set secStr = language -%}{%- endif -%}{%- endif -%}
-      {%- if published_by -%}{%- if secStr -%}{%- set secStr = secStr + "  ·  Published by " + published_by -%}{%- else -%}{%- set secStr = "Published by " + published_by -%}{%- endif -%}{%- endif -%}
-      {%- if secStr -%}
-      <div class="header-secondary">{{ secStr }}</div>
-      {%- endif -%}
+      <hr class="header-separator">
       {% for imp in dynamics.common.beforeContent %}
         {% include imp %}
       {% endfor %}
