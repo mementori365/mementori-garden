@@ -84,19 +84,14 @@ What the recursion teaches is not about technology. It is about what it means to
 
 ## Your choices
 
-
 > [!tip] 🔊  LISTEN to the original recording
 > [▶ Play — 16 minutes · Vietnamese + German + English](PENDING)
 > *Opens in Google Drive · No account needed*
-
----
 
 > [!info] 📄  READ the transcript
 > [▶ Scripted summary — below](#the-conversation) · *composed narrative*
 > [▶ Original Groq transcript](../../../1M/Call%20with%20Stiefel%20Simone.transcript.md) · *word-for-word · Groq Whisper*
 > [▶ Original iPhone transcript](../../../1M/Call%20with%20Stiefel%20Simone/Call%20with%20Stiefel%20Simone.md) · *speaker-labeled · Apple Notes*
-
----
 
 > [!danger] 🗑️  DELETE this conversation
 > *Request removal of the recording, transcript, and this page.*
