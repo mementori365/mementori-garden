@@ -78,6 +78,25 @@ Everything in M1 is live. The design is stable and signed off. The following is 
 
 ---
 
+### V1.2 · Obsidian scanners off · 2026-04-21
+
+**Status:** complete
+**Branch:** `claude/disable-obsidian-scanners-qVipG`
+**Tag:** `v1.2-obsidian-scanners-off`
+
+Vault root = repo root, so Obsidian was indexing `node_modules`, `_site`, build outputs, helpers, Eleventy templates, and binary assets. Clicking a tag (e.g. `#iclickrightnow`) froze the app because the tag pane had to re-traverse the full tree.
+
+**What was locked in:**
+- `.obsidian/app.json` with `userIgnoreFilters` excluding build/dev paths: `node_modules/`, `_site/`, `.cache/`, `dist/`, `.netlify/`, `.vercel/`, `.git/`, `src/helpers/`, `src/site/_data/`, `src/site/_includes/`, `src/site/styles/`, `src/site/img/`, plus top-level config files (`.eleventy.js`, `package*.json`, `plugin-info.json`, `netlify.toml`, `vercel.json`).
+- `.obsidian/core-plugins.json` disables the heaviest scanners: `graph` (full backlink graph), `tag-pane` (the one that hung on tag click), `file-recovery` (periodic disk snapshot of every file). Backlinks and outgoing-links stay on.
+- `.obsidian/workspace.json` and `.obsidian/workspace-mobile.json` added to `.gitignore` (per-machine state). `.obsidian/` is otherwise committed so every clone inherits the fast config.
+
+**To re-enable a disabled scanner on your machine:** Settings → Core plugins, toggle it on. Your local change stays local unless you commit `core-plugins.json`.
+
+**Caveat on pull:** if you already have local edits in `.obsidian/app.json` or `.obsidian/core-plugins.json`, this commit will overwrite them. Theme and Style Settings data live in other files (`appearance.json`, `plugins/obsidian-style-settings/data.json`) and are untouched.
+
+---
+
 ## Principles
 
 ### The Bridge

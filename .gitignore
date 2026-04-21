@@ -11,3 +11,7 @@ src/site/styles/_theme.*.css
 .cache
 _site/
 **/.DS_Store
+
+# Obsidian per-machine state (keep app.json and core-plugins.json tracked)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
