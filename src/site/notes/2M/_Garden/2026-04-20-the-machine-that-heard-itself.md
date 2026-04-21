@@ -38,7 +38,7 @@ published_by: nhan
 dg-publish: true
 permalink: /notes/2M/_Garden/2026-04-20-the-machine-that-heard-itself/
 ---
-*Sunday, 20. April, 2026 · Da Nang · 16 minutes · Vietnamese + German + English · Published 20. April, 2026*
+`*Sunday, 20. April, 2026 · Da Nang · 16 minutes · Vietnamese + German + English · Published 20. April, 2026*`
 
 ![0M/Attachments/6df13cdf2e5366744c98f6e259a88e4c_MD5.jpg](/notes/6df13cdf2e5366744c98f6e259a88e4c-md5jpg/)
 
