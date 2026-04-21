@@ -99,8 +99,6 @@ What the recursion teaches is not about technology. It is about what it means to
 > 📨 **Tap to send a delete request** — [opens a pre-written email on your phone](mailto:mementori365@gmail.com?subject=delete%20%7C%202026-04-20%20The%20machine%20that%20heard%20itself&body=Please%20delete%20the%20recording%2C%20transcript%2C%20and%20all%20connected%20files%20from%20the%20conversation%20of%20Sunday%2020%20April%202026%20%E2%80%94%20%22The%20machine%20that%20heard%20itself%22.)
 > *(Nhan handles deletion within 24 hours)*
 
----
-
 ## The conversation
 
 *Transcribed by Groq Whisper Large v3 Turbo + iPhone Apple Notes · Vietnamese + German + English · 16 minutes*
