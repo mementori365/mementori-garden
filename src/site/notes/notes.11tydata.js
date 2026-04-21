@@ -15,7 +15,12 @@ module.exports = {
       if (data.tags.indexOf("gardenEntry") != -1) {
         return "/";
       }
-      return data.permalink || undefined;
+      if (data.permalink) {
+        // DG plugin writes /notes/... permalinks; strip that prefix so
+        // pages always live at /2M/... regardless of what Obsidian saved.
+        return data.permalink.replace(/^\/notes\//, '/');
+      }
+      return undefined;
     },
     basesNotes: (data) => {
       if (!data.collections || !data.collections.note) return [];
