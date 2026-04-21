@@ -1,0 +1,27 @@
+{
+  "promptDelete": true,
+  "alwaysUpdateLinks": true,
+  "useMarkdownLinks": false,
+  "newLinkFormat": "shortest",
+  "attachmentFolderPath": "src/site/img",
+  "userIgnoreFilters": [
+    "node_modules/",
+    "_site/",
+    ".cache/",
+    "dist/",
+    ".netlify/",
+    ".vercel/",
+    ".git/",
+    "src/helpers/",
+    "src/site/_data/",
+    "src/site/_includes/",
+    "src/site/styles/",
+    "src/site/img/",
+    ".eleventy.js",
+    "package.json",
+    "package-lock.json",
+    "plugin-info.json",
+    "netlify.toml",
+    "vercel.json"
+  ]
+}
