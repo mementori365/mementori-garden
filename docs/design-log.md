@@ -22,7 +22,7 @@ Five things you must not re-decide:
 
 **Status:** in-progress (executing 2026-04-21)
 **Branch:** `claude/rollback-background-color-QmEVI`
-**Plan vault copy:** `src/site/notes/0M/_system/plans/2026-04-21-m1-marginalian-polish.md`
+**Plan file:** `docs/plans/2026-04-21-m1-marginalian-polish.md`
 
 **What was locked in:**
 - Palette: parchment `#f5ecd7` base, `#ede0c8` alt surface, `#d8cbb0` borders; dark base `#1c1a18`, dark surface `#252220`, dark borders `#383028`
@@ -34,7 +34,7 @@ Five things you must not re-decide:
 - Footer: aligned to content column via CSS section 21
 
 **Steps in this milestone:**
-1. Vault-copy plan to `0M/_system/plans/`
+1. Plan file archived to `docs/plans/` (NOT in `src/site/notes/` — Eleventy builds everything there publicly)
 2. This design log
 3. Footer alignment (custom-style.scss §21)
 4. Header-details meta line (note.njk + custom-style.scss)
@@ -64,7 +64,16 @@ Every field in the frontmatter that a reader cares about must appear as visible 
 | `title` | `<h1>` (via `dgShowInlineTitle`) |
 | `tags` | `.header-tags` pill row |
 
-Hero image = mental anchor. Every published note should have a hero that grounds the reader in place, time, or mood. External Unsplash URLs are fragile — commit images to `src/site/img/` instead.
+### Hero image standard
+
+Hero image = mental anchor. Every published note should have a hero that grounds the reader in place, time, or mood.
+
+**Rule:**
+- **Personal photos** (from the user or team) → store in G-Drive `mementori365` folder, then commit the downloaded file to `src/site/img/` so it's served with the site. Never hotlink a private G-Drive URL.
+- **Generic stock photos** (not personal) → an Unsplash URL is fine to keep in the markdown, because the image is already publicly hosted and stable. Reference: `![alt](https://images.unsplash.com/photo-XXXXX?w=1400&q=80)`. Closing the laptop does NOT affect it.
+- **Missing / placeholder** → use an Unsplash URL as temporary until a personal photo is ready. Mark the note with `hero_status: placeholder` in frontmatter so it's easy to grep.
+
+**System/AI plan files** belong in `docs/plans/`, NOT in `src/site/notes/`. Eleventy builds everything in `src/site/notes/` publicly regardless of `dg-publish: false`. The `dg-publish` flag only controls the Obsidian plugin's export, not Eleventy's build.
 
 ### Code-field aesthetic (no `<code>` semantic tag)
 

@@ -35,7 +35,7 @@ dg-publish: true
 permalink: /notes/2M/_Garden/2026-04-19-a-call-between-friends/
 ---
 
-![Mountains and mist — Da Nang, April 2026](/img/a-call-between-friends-hero.jpg)
+![Mountains and mist — Da Nang, April 2026](https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=80)
 
 # A call between friends
 

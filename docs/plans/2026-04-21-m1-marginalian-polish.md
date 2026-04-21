@@ -1,14 +1,3 @@
----
-title: "Plan — Milestone M1: Marginalian Parchment + Header Meta + Obsidian Parity"
-date: 2026-04-21
-status: complete
-branch: claude/rollback-background-color-QmEVI
-cost_estimate_usd: [0.15-0.40, 0.50-1.30, 3.00-6.00]
-model_used: sonnet-4-6
-dg-publish: false
-tags: [plan, system, ai-handoff]
----
-
 # Plan — Milestone "Marginalian Parchment" + Header Meta + Obsidian Parity
 
 ## Context
@@ -26,7 +15,7 @@ They now want to:
 
 1. **Lock in the current design as a milestone** — a living principles doc so the next AI (or the user) does not re-litigate settled decisions.
 2. **Fix the page footer** — it is not aligned to the sidebar / content column (footer currently has no CSS container at all).
-3. **Reshape the header area** — lift `date`, `location`, `duration`, `languages`, `participants`, `published_by` out of the YAML properties panel and render them as a small IBM Plex Mono "code-field" line next to the header tags. Frontmatter stays the machine-truth; the template renders the human sentence.
+3. **Reshape the header area** — lift `date`, `location`, `duration`, `languages`, `published_by` out of the YAML properties panel and render them as a small IBM Plex Mono "code-field" line next to the header tags. Frontmatter stays the machine-truth; the template renders the human sentence.
 4. **Tag hover → Hermès orange, 80% opacity solid** (instead of the current subtle tint).
 5. **Mirror the look in Obsidian** via Style Settings + Minimal theme + a vault CSS snippet — and hide the Properties panel so the author-view matches the reader-view.
 6. **Start a design log** so mistakes are captured once and not repeated, with a "next-AI preface" at the top.
@@ -218,16 +207,16 @@ One commit per concern, pushed in sequence on `claude/rollback-background-color-
 2. Push branch → confirm Netlify/Vercel deploy succeeds → click through the three notes from the home page.
 3. In Obsidian: drop the snippet into `.obsidian/snippets/mementori.css`, enable in Appearance → CSS snippets, confirm Properties panel hides and the page matches the site preview.
 
-## Resume Instructions (if this session dies)
+## Resume instructions (if this session dies)
 
 **Last-known state** (updated by the executing agent after each commit):
-- [x] Step 0: copy this plan into `src/site/notes/0M/_system/plans/2026-04-21-m1-marginalian-polish.md`
-- [x] Step 1: `docs/design-log.md` with M1 + principles + Q&A + cost-tier rules
-- [x] Step 2: footer alignment (custom-style.scss §21 + dark-mode override)
-- [x] Step 3: header-details meta line (note.njk insertion + custom-style.scss rule)
-- [x] Step 4: tag hover → orange 80% solid
-- [x] Step 5: Unsplash URL rewritten to local path — image download blocked by sandbox (see design-log.md Mistakes). Manual download needed.
-- [x] Step 6: `docs/obsidian-setup.md`
+- [ ] Step 0: copy this plan into `src/site/notes/0M/_system/plans/2026-04-21-m1-marginalian-polish.md`
+- [ ] Step 1: `docs/design-log.md` with M1 + principles + Q&A + cost-tier rules
+- [ ] Step 2: footer alignment (custom-style.scss §21 + dark-mode override)
+- [ ] Step 3: header-details meta line (note.njk insertion + custom-style.scss rule)
+- [ ] Step 4: tag hover → orange 80% solid
+- [ ] Step 5: download Unsplash hero → `src/site/img/a-call-between-friends-hero.jpg`, rewrite the note
+- [ ] Step 6: `docs/obsidian-setup.md`
 - [ ] Step 7: open draft PR on GitHub
 
 **If interrupted**: check `git log claude/rollback-background-color-QmEVI --oneline` to see which commits landed, tick the boxes above, resume at the first unchecked step. No need to redo work.
