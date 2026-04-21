@@ -643,6 +643,26 @@ header {
   margin-top: 0.4em;
 }
 
+.header-details {
+  display: inline-block;
+  margin-top: 0.6em;
+  padding: 0.35em 0.7em;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+  color: #6a6058;
+  background: #ede0c8;
+  border: 1px solid #d8cbb0;
+  border-radius: 3px;
+}
+
+hr.header-separator {
+  border: 0;
+  height: 1px;
+  background: #d8cbb0;
+  margin: 1.4em 0 2em;
+}
+
 /* ── 23. DARK MODE (genuine prefers-color-scheme) ───────────────
    For users who explicitly want dark — overrides our light defaults
    ─────────────────────────────────────────────────────────── */
@@ -700,6 +720,16 @@ header {
   h2                  { background: linear-gradient(transparent 58%, rgba(255, 210, 40, 0.18) 58%) !important; }
   h3                  { color: #c8c2ba !important; }
   mark                { background-color: rgba(224, 112, 48, 0.15) !important; color: #e0dbd3 !important; }
+
+  /* Dark-mode header-details pill */
+  .header-details {
+    background: #252220 !important;
+    color: #8a837c !important;
+    border-color: #383028 !important;
+  }
+
+  /* Dark-mode header separator */
+  hr.header-separator { background: #383028 !important; }
 
   /* Dark-mode internal links — cream orange accent */
   main.content a:not(.tag):not(.external-link):not([href^="http"]):not([href^="https"]):not([href^="mailto"]) {
