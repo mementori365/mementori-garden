@@ -46,11 +46,11 @@ body.theme-dark {
   color-scheme: light !important;
 
   /* Backgrounds */
-  --background-primary:          #faf9f7 !important;
-  --background-primary-alt:      #f2ede8 !important;
-  --background-secondary:        #f0ebe4 !important;
-  --background-secondary-alt:    #ebe5de !important;
-  --background-modifier-border:  #ddd8d0 !important;
+  --background-primary:          #f5ecd7 !important;
+  --background-primary-alt:      #ede0c8 !important;
+  --background-secondary:        #ead8be !important;
+  --background-secondary-alt:    #e4d0ac !important;
+  --background-modifier-border:  #d8cbb0 !important;
   --background-modifier-hover:   rgba(200, 90, 24, 0.06) !important;
   --background-modifier-active-hover: rgba(200, 90, 24, 0.1) !important;
 
@@ -65,8 +65,8 @@ body.theme-dark {
   /* Interactive */
   --interactive-accent:       #C85A18 !important;
   --interactive-accent-hover: #A84A12 !important;
-  --interactive-normal:       #f0ebe4 !important;
-  --interactive-hover:        #ebe5de !important;
+  --interactive-normal:       #ead8be !important;
+  --interactive-hover:        #e4d0ac !important;
 
   /* Links */
   --link-color:              #C85A18 !important;
@@ -76,7 +76,7 @@ body.theme-dark {
   --link-external-color-hover: #2a4a70 !important;
 
   /* Code */
-  --code-background:  #f2ede8 !important;
+  --code-background:  #ede0c8 !important;
   --code-normal:      #6a6058 !important;
   --code-comment:     #a09890 !important;
   --code-tag:         #C85A18 !important;
@@ -90,13 +90,13 @@ body.theme-dark {
   --callout-danger:   180, 60, 60 !important;
 
   /* Base color overrides */
-  --color-base-00: #faf9f7 !important;
+  --color-base-00: #f5ecd7 !important;
   --color-base-05: #f5f1ec !important;
-  --color-base-10: #f0ebe4 !important;
-  --color-base-20: #ebe5de !important;
-  --color-base-25: #e5ded6 !important;
-  --color-base-30: #ddd8d0 !important;
-  --color-base-35: #c8c2ba !important;
+  --color-base-10: #ead8be !important;
+  --color-base-20: #e4d0ac !important;
+  --color-base-25: #e0d1b6 !important;
+  --color-base-30: #d8cbb0 !important;
+  --color-base-35: #c3b59a !important;
   --color-base-40: #a09890 !important;
   --color-base-50: #6a6058 !important;
   --color-base-60: #4a4038 !important;
@@ -110,7 +110,7 @@ body.theme-dark {
 /* ── 3. BASE — HTML & BODY ───────────────────────────────────── */
 
 html, body {
-  background-color: #faf9f7 !important;
+  background-color: #f5ecd7 !important;
   color: #2a2520 !important;
   font-family: var(--font-body) !important;
   font-size: 17px !important;
@@ -118,7 +118,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── 4. HEADINGS — IBM Plex Sans, light & tall ───────────────── */
+/* ── 4. HEADINGS — Marginalian-inspired: bold italic serif ───── */
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-head) !important;
@@ -130,7 +130,8 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 2.4rem !important;
   font-weight: 300 !important;
-  letter-spacing: -0.025em;
+  font-style: italic;
+  letter-spacing: -0.03em;
   margin-bottom: 0.1em;
 }
 
@@ -140,25 +141,30 @@ h1 {
   font-family: var(--font-head) !important;
   font-weight: 600 !important;
   font-size: 1rem !important;
+  font-style: normal;
   letter-spacing: 0.05em;
   color: #2a2520 !important;
   margin: 0 !important;
 }
 
+/* H2: bold + yellow marker highlight (The Marginalian signature) */
 h2 {
   font-size: 1.45rem !important;
-  font-weight: 400 !important;
+  font-weight: 700 !important;
   margin-top: 2.5em;
-  padding-bottom: 0.3em;
-  border-bottom: 1px solid #ddd8d0 !important;
+  margin-bottom: 0.4em;
+  border-bottom: none !important;
+  background: linear-gradient(transparent 58%, rgba(255, 210, 40, 0.38) 58%);
+  display: inline-block;
+  padding-right: 0.15em;
 }
 
 h3 {
   font-size: 1.05rem !important;
-  font-weight: 300 !important;
+  font-weight: 600 !important;
   font-style: italic;
   margin-top: 2em;
-  color: #6a6058 !important;
+  color: #4a4038 !important;
 }
 
 h4, h5, h6 {
@@ -184,7 +190,7 @@ em { font-style: italic; color: inherit; }
 code, pre, kbd {
   font-family: var(--font-mono) !important;
   font-size: 0.78em;
-  background: #f2ede8 !important;
+  background: #ede0c8 !important;
   color: #a09890 !important;
   border-radius: 3px;
   transition: color 0.2s;
@@ -192,7 +198,7 @@ code, pre, kbd {
 
 /* Inline code — e.g. .notes.md, 0M — no black background */
 p code, li code, h1 code, h2 code, h3 code, td code {
-  background: #f2ede8 !important;
+  background: #ede0c8 !important;
   color: #a09890 !important;
   padding: 0.1em 0.35em;
   border-radius: 3px;
@@ -204,7 +210,7 @@ pre {
   padding: 1em 1.2em;
   overflow-x: auto;
   color: #6a6058 !important;
-  border: 1px solid #ddd8d0;
+  border: 1px solid #d8cbb0;
   border-radius: 4px;
   line-height: 1.6;
 }
@@ -316,7 +322,7 @@ mark {
 main.content,
 .content.cm-s-obsidian {
   max-width: var(--content-width);
-  background: #faf9f7 !important;
+  background: #f5ecd7 !important;
   color: #2a2520 !important;
   font-family: var(--font-body) !important;
 }
@@ -325,8 +331,8 @@ main.content,
 
 .navbar,
 nav.navbar {
-  background-color: #faf9f7 !important;
-  border-bottom: 1px solid #ddd8d0 !important;
+  background-color: #f5ecd7 !important;
+  border-bottom: 1px solid #d8cbb0 !important;
 }
 
 /* Site title — hide "Digital Garden", replace with "Mementori" */
@@ -343,12 +349,12 @@ nav.navbar h1:first-of-type {
 /* ── 12. FILETREE SIDEBAR ───────────────────────────────────── */
 
 .filetree-wrapper {
-  background-color: #f0ebe4 !important;
+  background-color: #ead8be !important;
 }
 
 .filetree-sidebar,
 nav.filetree-sidebar {
-  background-color: #f0ebe4 !important;
+  background-color: #ead8be !important;
   color: #6a6058 !important;
 }
 
@@ -402,7 +408,7 @@ a.filename:hover,
   letter-spacing: 0.05em;
   color: #2a2520 !important;
   text-transform: uppercase;
-  border-bottom: 1px solid #ddd8d0;
+  border-bottom: 1px solid #d8cbb0;
   padding-bottom: 0.5em;
   margin-bottom: 1em;
 }
@@ -415,7 +421,7 @@ a.filename:hover,
   font-size: 0.74rem !important;
   color: #a09890 !important;
   background: transparent !important;
-  border-left: 1px solid #ddd8d0 !important;
+  border-left: 1px solid #d8cbb0 !important;
 }
 
 .toc-title,
@@ -462,8 +468,8 @@ blockquote p { color: #6a6058 !important; }
 
 .callout {
   border-radius: 6px !important;
-  border: 1px solid #ddd8d0 !important;
-  background: #f2ede8 !important;
+  border: 1px solid #d8cbb0 !important;
+  background: #ede0c8 !important;
   color: #2a2520 !important;
   padding: 0.9rem 1.2rem !important;
   margin: 1.5em 0 !important;
@@ -524,7 +530,7 @@ blockquote p { color: #6a6058 !important; }
   font-family: var(--font-mono) !important;
   font-size: 0.8rem !important;
   color: #a09890 !important;
-  border-top: 1px solid #ddd8d0;
+  border-top: 1px solid #d8cbb0;
   padding-top: 1.5em;
   margin-top: 2em;
 }
@@ -558,7 +564,7 @@ main.content img,
 
 hr {
   border: none !important;
-  border-top: 1px solid #ddd8d0 !important;
+  border-top: 1px solid #d8cbb0 !important;
   margin: 2.5em 0 !important;
 }
 
@@ -573,13 +579,13 @@ table {
 }
 th {
   font-weight: 500;
-  border-bottom: 1px solid #ddd8d0;
+  border-bottom: 1px solid #d8cbb0;
   padding: 0.4em 0.8em;
   text-align: left;
   color: #2a2520 !important;
 }
 td {
-  border-bottom: 1px solid #f0ebe4;
+  border-bottom: 1px solid #ead8be;
   padding: 0.35em 0.8em;
   color: #6a6058 !important;
 }
@@ -587,8 +593,8 @@ td {
 /* ── 20. GRAPH ───────────────────────────────────────────────── */
 
 .graph {
-  background: #f0ebe4 !important;
-  border: 1px solid #ddd8d0 !important;
+  background: #ead8be !important;
+  border: 1px solid #d8cbb0 !important;
   border-radius: 6px;
 }
 
@@ -603,19 +609,19 @@ td {
 /* ── 21. SEARCH ──────────────────────────────────────────────── */
 
 .search-container {
-  background: rgba(250, 249, 247, 0.97) !important;
+  background: rgba(245, 236, 215, 0.97) !important;
 }
 
 .search-box {
-  background: #faf9f7 !important;
-  border: 1px solid #ddd8d0 !important;
+  background: #f5ecd7 !important;
+  border: 1px solid #d8cbb0 !important;
 }
 
 #term {
   font-family: var(--font-body) !important;
-  background: #f2ede8 !important;
+  background: #ede0c8 !important;
   color: #2a2520 !important;
-  border: 1px solid #ddd8d0 !important;
+  border: 1px solid #d8cbb0 !important;
 }
 
 /* ── 22. HEADER META (title + tags at top of note) ──────────── */
@@ -623,7 +629,7 @@ td {
 header {
   margin-bottom: 1.5em;
   padding-bottom: 1em;
-  border-bottom: 1px solid #ddd8d0;
+  border-bottom: 1px solid #d8cbb0;
 }
 
 .header-meta {
@@ -689,6 +695,7 @@ header {
   code, pre           { background: #252220 !important; color: #8a837c !important; }
   p code, li code     { background: #252220 !important; color: #8a837c !important; }
   hr                  { border-color: #383028 !important; }
-  h2                  { border-color: #383028 !important; }
+  h2                  { background: linear-gradient(transparent 58%, rgba(255, 210, 40, 0.18) 58%) !important; }
+  h3                  { color: #c8c2ba !important; }
   mark                { background-color: rgba(224, 112, 48, 0.15) !important; color: #e0dbd3 !important; }
 }
