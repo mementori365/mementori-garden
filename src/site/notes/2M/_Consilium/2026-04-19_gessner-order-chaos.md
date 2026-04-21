@@ -14,10 +14,11 @@ dg-home: false
 permalink: /2M/_Consilium/2026-04-19-gessner-order-chaos/
 ---
 
+
 # Consilium — Order vs. Chaos
 ## How do we hold order without killing the chaos that makes new thought possible?
 
-*Input: `[0M/How One Man Organized All Knowledge](/notes/how-one-man-organized-all-knowledge/)` — Conrad Gessner, Bibliotheca Universalis, the slip-box method (cut, arrange, fix).*
+*Input: `[[0M/How One Man Organized All Knowledge]]` — Conrad Gessner, Bibliotheca Universalis, the slip-box method (cut, arrange, fix).*
 *First round in a monthly series. Voices: Gessner, Luhmann, Locke, DaVinci, Hemingway, Eco.*
 *Danang, Sunday 19. April, 2026*
 

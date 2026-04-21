@@ -1,9 +1,7 @@
 ---
-dg-publish: true
-dg-home: true
-tags: [gardenEntry]
-title: Mementori
+{"dg-publish":true,"permalink":"/2-m/garden/index/","title":"Mementori","tags":["gardenEntry"],"dg-note-properties":{"tags":["gardenEntry"],"title":"Mementori"}}
 ---
+
 
 # Mementori
 
