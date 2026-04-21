@@ -1,7 +1,22 @@
 ---
-{"dg-publish":true,"permalink":"/0-m/x/incoming/call-with-tran-minh-thu-transcript/","dg-note-properties":{"source_audio":"Call with Tran Minh Thu.m4a","source_path":"0M/x/incoming/Call with Tran Minh Thu.m4a","transcribed_at":"2026-04-19T17:46:33.759054+00:00","duration":"48:11","language":"unknown","model":"groq/whisper-large-v3-turbo","significance":null,"essence":null,"suggested_action":null,"suggested_location":null,"candidate_tags":[],"processed":false,"gdrive_url":"https://drive.google.com/file/d/1sTBLk7Y1y4irdu2GpTZQd1QhZ1QtxY04/view?usp=sharing","gdrive_file_id":"1sTBLk7Y1y4irdu2GpTZQd1QhZ1QtxY04"}}
----
+source_audio: "Call with Tran Minh Thu.m4a"
+source_path: "0M/x/incoming/Call with Tran Minh Thu.m4a"
+transcribed_at: "2026-04-19T17:46:33.759054+00:00"
+duration: "48:11"
+language: "unknown"
+model: "groq/whisper-large-v3-turbo"
+significance: null
+essence: null
+suggested_action: null
+suggested_location: null
+candidate_tags: []
+processed: false
+dg-publish: true
+gdrive_url: "https://drive.google.com/file/d/1sTBLk7Y1y4irdu2GpTZQd1QhZ1QtxY04/view?usp=sharing"
+gdrive_file_id: "1sTBLk7Y1y4irdu2GpTZQd1QhZ1QtxY04"
 
+permalink: /0M/x/incoming/call-with-tran-minh-thutranscript/
+---
 
 # Transcript — Call with Tran Minh Thu
 

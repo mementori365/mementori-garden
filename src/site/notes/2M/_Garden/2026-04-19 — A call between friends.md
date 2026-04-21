@@ -1,5 +1,38 @@
 ---
-{"dg-publish":true,"permalink":"/2-m/garden/2026-04-19-a-call-between-friends/","title":"A call between friends","tags":["conversation","transcript","private","minh-thu","meditation","kaizen3","mementori"],"dg-note-properties":{"title":"A call between friends","subtitle":"On finding peace, building thinking teams, and the next beautiful step","version":2,"date":"2026-04-19","day":"Sunday, 19. April, 2026","location":"Da Nang + Hồ Chí Minh City","duration":"48:11","participants":["Nhan","Minh Thu"],"consent_required":["Nhan","Minh Thu"],"consent_given":[],"share_status":"private","gdrive_url":"https://drive.google.com/file/d/1sTBLk7Y1y4irdu2GpTZQd1QhZ1QtxY04/view?usp=sharing","source_audio":"0M/x/incoming/Call with Tran Minh Thu.m4a","transcript_path":"0M/x/incoming/Call with Tran Minh Thu.transcript.md","language":"vi + en","model":"groq/whisper-large-v3-turbo","significance":8,"tags":["conversation","transcript","private","minh-thu","meditation","kaizen3","mementori"],"jotbird_publish":true,"jotbird_link":"https://share.jotbird.com/warm-spirited-butte","jotbird_expires":"2026-05-19"}}
+title: A call between friends
+subtitle: On finding peace, building thinking teams, and the next beautiful step
+version: 2
+date: 2026-04-19
+day: Sunday, 19. April, 2026
+location: Da Nang + Hồ Chí Minh City
+duration: "48:11"
+participants:
+  - Nhan
+  - Minh Thu
+consent_required:
+  - Nhan
+  - Minh Thu
+consent_given: []
+share_status: private
+gdrive_url: https://drive.google.com/file/d/1sTBLk7Y1y4irdu2GpTZQd1QhZ1QtxY04/view?usp=sharing
+source_audio: 0M/x/incoming/Call with Tran Minh Thu.m4a
+transcript_path: 0M/x/incoming/Call with Tran Minh Thu.transcript.md
+language: vi + en
+model: groq/whisper-large-v3-turbo
+significance: 8
+tags:
+  - conversation
+  - transcript
+  - private
+  - minh-thu
+  - meditation
+  - kaizen3
+  - mementori
+jotbird_publish: true
+jotbird_link: https://share.jotbird.com/warm-spirited-butte
+jotbird_expires: 2026-05-19
+dg-publish: true
+permalink: /2M/_Garden/2026-04-19-a-call-between-friends/
 ---
 
 

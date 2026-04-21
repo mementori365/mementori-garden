@@ -36,7 +36,7 @@ tags:
 meisterwerk: true
 published_by: nhan
 dg-publish: true
-permalink: /notes/2M/_Garden/2026-04-20-the-machine-that-heard-itself/
+permalink: /2M/_Garden/2026-04-20-the-machine-that-heard-itself/
 ---
 `Sunday, 20. April, 2026 · Da Nang · 16 minutes · Vietnamese + German + English · Published 20. April, 2026
 

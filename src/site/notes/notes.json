@@ -1,6 +1,7 @@
 {
     "tags": "note",
     "templateEngineOverride": "md",
+    "dgShowInlineTitle": false,
     "dgShowLocalGraph": false,
     "dgShowBacklinks": true,
     "dgShowFileTree": true,

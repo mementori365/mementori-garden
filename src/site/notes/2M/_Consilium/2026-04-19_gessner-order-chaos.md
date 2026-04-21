@@ -1,5 +1,17 @@
 ---
-{"dg-publish":true,"permalink":"/2-m/consilium/2026-04-19-gessner-order-chaos/","tags":["kaizen3","consilium","order-chaos","knowledge-organization"],"dg-note-properties":{"envelope":{"written_at":"2026-04-19T12:00:00+07:00","human_date":"Danang, Sunday 19. April, 2026","author":"dreamteam","location":"2M/_Consilium/"},"tags":["kaizen3","consilium","order-chaos","knowledge-organization"],"ConTags":["knowledge-organization","vault-architecture","gessner","philosophy"],"significance":9,"emotional_register":"wonder","roster":["gessner","luhmann","locke","davinci","hemingway","eco"]}}
+envelope:
+  written_at: 2026-04-19T12:00:00+07:00
+  human_date: "Danang, Sunday 19. April, 2026"
+  author: dreamteam
+  location: 2M/_Consilium/
+tags: [kaizen3, consilium, order-chaos, knowledge-organization]
+ConTags: [knowledge-organization, vault-architecture, gessner, philosophy]
+significance: 9
+emotional_register: wonder
+roster: [gessner, luhmann, locke, davinci, hemingway, eco]
+dg-publish: true
+dg-home: false
+permalink: /2M/_Consilium/2026-04-19-gessner-order-chaos/
 ---
 
 
