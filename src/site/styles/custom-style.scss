@@ -685,7 +685,9 @@ header {
   .filetree-wrapper   { background-color: #211f1c !important; }
   .filetree-sidebar   { background-color: #211f1c !important; color: #8a837c !important; }
   .navbar             { background-color: #1c1a18 !important; border-color: #383028 !important; }
-  main.content        { background: #1c1a18 !important; color: #e0dbd3 !important; }
+  main.content,
+  .content.cm-s-obsidian,
+  main.content.cm-s-obsidian { background: #1c1a18 !important; color: #e0dbd3 !important; }
   h1, h2, h3, h4, h5, h6 { color: #e0dbd3 !important; }
   p, li               { color: #e0dbd3 !important; }
   blockquote          { color: #8a837c !important; }
@@ -698,4 +700,14 @@ header {
   h2                  { background: linear-gradient(transparent 58%, rgba(255, 210, 40, 0.18) 58%) !important; }
   h3                  { color: #c8c2ba !important; }
   mark                { background-color: rgba(224, 112, 48, 0.15) !important; color: #e0dbd3 !important; }
+
+  /* Dark-mode internal links — cream orange accent */
+  main.content a:not(.tag):not(.external-link):not([href^="http"]):not([href^="https"]):not([href^="mailto"]) {
+    color: #E07030 !important;
+    border-bottom-color: rgba(224, 112, 48, 0.4) !important;
+  }
+  main.content a:not(.tag):not(.external-link):not([href^="http"]):not([href^="https"]):not([href^="mailto"]):hover {
+    color: #F08040 !important;
+    border-bottom-color: #E07030 !important;
+  }
 }
