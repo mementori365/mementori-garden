@@ -74,8 +74,6 @@ That machine processed this call. Two engines transcribed it. One heard noise wh
 
 - **"Create what we imagine."** It came through both engines, in both languages, unmistakably. Past all the noise, past the hallucinated subscribe phrases and the silences. One phrase, intact. The instruction and the result, in the same sentence.
 
----
-
 ## Where this leads
 
 For the pipeline, this call was a stress test it did not know it was taking. A 16-minute multilingual call — three languages, mid-sentence switches, two voices — is among the hardest possible inputs. Groq handled content. iPhone handled structure. The verdict is clear: the next upgrade to `audio_watcher.py` adds a diarization layer in series with Groq, not as a replacement. The architecture already knows what it needs.
@@ -84,11 +82,8 @@ For Simone, something shifted. She had been the listener on this call, the one a
 
 What the recursion teaches is not about technology. It is about what it means to build something that pays attention. If a system is honest enough to hear what it is being described as, and return it accurately, then it has done something worth keeping. Not because the words were perfect — they were not. Because something real moved between two people, across three languages and two failing engines, and a third thing was there to catch it.
 
----
-
 ## Your choices
 
----
 
 > [!tip] 🔊  LISTEN to the original recording
 > [▶ Play — 16 minutes · Vietnamese + German + English](PENDING)
