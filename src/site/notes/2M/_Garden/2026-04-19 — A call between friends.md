@@ -42,10 +42,6 @@ permalink: /2M/_Garden/2026-04-19-a-call-between-friends/
 
 ### *On finding peace, building thinking teams, and the next beautiful step*
 
-*Sunday, 19. April, 2026 · Da Nang ↔ Hồ Chí Minh City · 48 minutes · Published 20. April, 2026*
-
----
-
 ## What this conversation is about
 
 Minh Thu had just returned from three days in the mountains — a trip she called *the light child tracking*. She came back changed. Not in the way people say they are changed, but in the quieter way: she found a room inside herself that had always been there, and she finally sat down in it.

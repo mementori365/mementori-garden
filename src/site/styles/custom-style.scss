@@ -343,7 +343,7 @@ a.filename:hover, .notelink:hover a.filename { color: var(--orange) !important; 
 .notelink.active-note a.filename { color: var(--orange) !important; font-weight: 500; }
 
 /* ── 13. TOC ─────────────────────────────────────────────────── */
-:root { --dg-sidebar-top: 280px; }
+:root { --dg-sidebar-top: 400px; }
 .toc, .toc-container {
   font-family: var(--font-mono) !important;
   font-size: 0.74rem !important;
@@ -466,7 +466,7 @@ body {
   --dg-filetree-gap:        30px;
   --dg-content-max-width:  600px;
   --dg-sidebar-max-width:  240px;
-  --dg-sidebar-gap:         30px;
+  --dg-sidebar-gap:         80px;
 }
 
 /* ── 21. FOOTER ──────────────────────────────────────────────── */

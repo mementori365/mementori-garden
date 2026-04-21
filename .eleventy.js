@@ -671,6 +671,21 @@ module.exports = function(eleventyConfig) {
     }
   });
 
+  eleventyConfig.addTransform("fixDgAttachmentImages", function(content) {
+    if (!(this.page.outputPath || "").endsWith(".html")) return content;
+    // DG plugin v4+ stores attachments at /img/user/{vault-path} but writes
+    // broken markdown references like ![vault/path.jpg](/notes/slugified/).
+    // Fix: when src="/notes/..." and alt looks like an image path, rewrite src.
+    return content.replace(/<img([^>]*?)>/gi, (imgTag, attrs) => {
+      const altMatch = attrs.match(/\balt="([^"]*?\.(jpe?g|png|gif|webp|svg|avif))"/i);
+      const srcMatch = attrs.match(/\bsrc="(\/notes\/[^"]+?)"/i);
+      if (altMatch && srcMatch) {
+        return imgTag.replace(srcMatch[0], `src="/img/user/${altMatch[1]}"`);
+      }
+      return imgTag;
+    });
+  });
+
   eleventyConfig.addTransform("htmlMinifier", async function(content) {
     if (
       (process.env.NODE_ENV === "production" || process.env.ELEVENTY_ENV === "prod") &&
