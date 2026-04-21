@@ -427,6 +427,17 @@ td { border-bottom: 1px solid #ead8be; padding: 0.35em 0.8em; color: #6a6058 !im
 main.content header { margin-bottom: 1.5em; padding-bottom: 1em; border-bottom: 1px solid #d8cbb0; }
 .header-meta { margin-top: 0.6em; }
 .header-tags { display: flex; flex-wrap: wrap; gap: 0.2em; margin-top: 0.4em; }
+.header-details {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #6a6058;
+  background: #ede0c8;
+  padding: 0.35em 0.7em;
+  border-radius: 3px;
+  display: inline-block;
+  margin-top: 0.5em;
+  letter-spacing: 0.01em;
+}
 
 
 /* ── 20. LAYOUT — GOLDEN RATIO ──────────────────────────────── */
@@ -504,4 +515,5 @@ body > footer, body > .site-footer, body > .footer {
   td { color: #8a837c !important; border-color: #383028 !important; }
   th { color: #e0dbd3 !important; border-color: #383028 !important; }
   body > footer, body > .site-footer, body > .footer { border-top-color: #383028 !important; color: #5a5450 !important; }
+  .header-details { background: #252220 !important; color: #8a837c !important; }
 }
