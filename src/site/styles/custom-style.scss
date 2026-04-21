@@ -340,12 +340,13 @@ a.filename:hover, .notelink:hover a.filename { color: var(--orange) !important; 
 .notelink.active-note a.filename { color: var(--orange) !important; font-weight: 500; }
 
 /* ── 13. TOC ─────────────────────────────────────────────────── */
+:root { --dg-sidebar-top: 280px; }
 .toc, .toc-container {
   font-family: var(--font-mono) !important;
   font-size: 0.74rem !important;
   color: #a09890 !important;
   background: transparent !important;
-  border-left: 1px solid #d8cbb0 !important;
+  border-left: none !important;
 }
 .toc-title, .toc-title-container {
   font-family: var(--font-mono) !important;
@@ -414,14 +415,15 @@ blockquote p { color: #6a6058 !important; margin-bottom: 0.4em; }
 .callout.is-collapsible .callout-title { cursor: pointer; }
 
 /* ── 16. BACKLINKS ───────────────────────────────────────────── */
-.backlinks { font-family: var(--font-mono) !important; font-size: 0.8rem !important; color: #a09890 !important; border-top: 1px solid #d8cbb0; padding-top: 1.5em; margin-top: 2em; }
-.backlink-title { font-size: 0.66rem !important; text-transform: uppercase; letter-spacing: 0.08em; color: #a09890 !important; margin-bottom: 0.5em; }
-.backlink-card a { color: #6a6058 !important; border-bottom: none !important; transition: color 0.15s; }
+.backlinks { font-family: var(--font-mono) !important; font-size: 0.74rem !important; color: #a09890 !important; border-top: 1px solid #d8cbb0; padding-top: 1.5em; margin-top: 2em; }
+.backlink-title { font-size: 0.64rem !important; text-transform: uppercase; letter-spacing: 0.08em; color: #a09890 !important; margin-bottom: 0.5em; }
+.backlink-card a { color: #a09890 !important; border-bottom: none !important; transition: color 0.15s; }
 .backlink-card a:hover { color: var(--orange) !important; }
 
 /* ── 17. MISC ────────────────────────────────────────────────── */
 main.content img, .content img { width: 100% !important; border-radius: 4px; margin: 1.5em 0; display: block; }
 hr { border: none !important; border-top: 1px solid #d8cbb0 !important; margin: 2.5em 0 !important; }
+hr.header-separator { margin: 1em 0 0 !important; }
 table { width: 100%; border-collapse: collapse; font-family: var(--font-mono) !important; font-size: 0.82em !important; }
 th { font-weight: 500; border-bottom: 1px solid #d8cbb0; padding: 0.4em 0.8em; text-align: left; color: #2a2520 !important; }
 td { border-bottom: 1px solid #ead8be; padding: 0.35em 0.8em; color: #6a6058 !important; }

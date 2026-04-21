@@ -1,5 +1,5 @@
 ---
-permalink: "notes/{{ page.fileSlug | slugify }}/"
+permalink: "{{ page.filePathStem | replace('/notes/', '/') }}/"
 ---
 <!DOCTYPE html>
 <html lang="{{ meta.mainLanguage }}">
@@ -46,8 +46,9 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
           {%- set metaStr = "" -%}
           {%- if day -%}{%- set metaStr = day -%}{%- endif -%}
           {%- if location -%}{%- if metaStr -%}{%- set metaStr = metaStr + "  ·  " + location -%}{%- else -%}{%- set metaStr = location -%}{%- endif -%}{%- endif -%}
+          {%- if participants -%}{%- set participantsStr = participants | join(' + ') -%}{%- if metaStr -%}{%- set metaStr = metaStr + "  ·  " + participantsStr -%}{%- else -%}{%- set metaStr = participantsStr -%}{%- endif -%}{%- endif -%}
           {%- if duration -%}{%- if metaStr -%}{%- set metaStr = metaStr + "  ·  " + duration + " min" -%}{%- else -%}{%- set metaStr = duration + " min" -%}{%- endif -%}{%- endif -%}
-          {%- if languages -%}{%- if metaStr -%}{%- set metaStr = metaStr + "  ·  " + languages -%}{%- else -%}{%- set metaStr = languages -%}{%- endif -%}{%- endif -%}
+          {%- if languages -%}{%- set langStr = languages | join(' · ') -%}{%- if metaStr -%}{%- set metaStr = metaStr + "  ·  " + langStr -%}{%- else -%}{%- set metaStr = langStr -%}{%- endif -%}{%- elif language -%}{%- if metaStr -%}{%- set metaStr = metaStr + "  ·  " + language -%}{%- else -%}{%- set metaStr = language -%}{%- endif -%}{%- endif -%}
           {%- if published_by -%}{%- if metaStr -%}{%- set metaStr = metaStr + "  ·  Published by " + published_by -%}{%- else -%}{%- set metaStr = "Published by " + published_by -%}{%- endif -%}{%- endif -%}
           {%- if metaStr -%}
           <div class="header-details">{{ metaStr }}</div>
@@ -70,6 +71,7 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
         {% include imp %}
       {% endfor %}
       </header>
+      <hr class="header-separator">
       {% for imp in dynamics.common.beforeContent %}
         {% include imp %}
       {% endfor %}

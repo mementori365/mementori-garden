@@ -11,7 +11,7 @@ emotional_register: wonder
 roster: [gessner, luhmann, locke, davinci, hemingway, eco]
 dg-publish: true
 dg-home: false
-permalink: /notes/2M/_Consilium/2026-04-19-gessner-order-chaos/
+permalink: /2M/_Consilium/2026-04-19-gessner-order-chaos/
 ---
 
 # Consilium — Order vs. Chaos

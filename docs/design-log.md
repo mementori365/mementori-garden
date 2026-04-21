@@ -20,7 +20,7 @@ Five things you must not re-decide:
 
 ### M1 · Marginalian Parchment · 2026-04-20 (v1.7)
 
-**Status:** in-progress (executing 2026-04-21)
+**Status:** complete (2026-04-21)
 **Branch:** `claude/rollback-background-color-QmEVI`
 **Plan file:** `docs/plans/2026-04-21-m1-marginalian-polish.md`
 
@@ -41,6 +41,40 @@ Five things you must not re-decide:
 5. Tag hover → Hermès orange 80% solid
 6. Unsplash hero → local image for "A call between friends"
 7. Obsidian setup doc
+
+---
+
+### V1 · Stable baseline · 2026-04-21
+
+**Status:** complete (tagged as milestone before V1.1 work begins)
+**Branch:** `claude/rollback-background-color-QmEVI`
+**Commit:** `7769888` (fix: system plan → docs/plans, restore Unsplash hero, update design-log)
+
+Everything in M1 is live. The design is stable and signed off. The following is the locked V1 state — do not drift from this without opening a new milestone.
+
+**What V1 delivered:**
+- Parchment palette, IBM Plex family, Hermès orange accent — all locked
+- Golden-ratio layout with fixed left filetree (370px) and right sidebar (240px)
+- Header-details meta bar below tags (mono pill: day · location · duration · languages)
+- Tag hover → Hermès orange 80% solid
+- Hero image standard: personal photos → commit to `src/site/img/`; stock → Unsplash URL is stable
+- `<picture>` element display fixed; `main.content` min-height so fixed sidebars don't overflow
+- Design log + Obsidian setup docs committed to `docs/`
+
+---
+
+### V1.1 · URL paths, TOC polish, page order · 2026-04-21
+
+**Status:** in-progress
+**Branch:** `claude/rollback-background-color-QmEVI`
+
+**What changes in V1.1:**
+- URLs: remove `/notes/` prefix from all permalinks; fix `2-m` → `2M` by bypassing `slugify` in `.eleventy.js` wikilink resolution
+- TOC: remove 2 vertical border lines (both from `custom-style.scss` `.toc, .toc-container` rule); push TOC start position down with `--dg-sidebar-top: 280px`
+- Backlinks: align font/size/color with TOC (`0.74rem`, `#a09890` for card links)
+- `dgShowInlineTitle: false` added explicitly to `notes.json`
+- Page order: tags → meta (now includes `participants`) → `<hr class="header-separator">` → hero image → h1 (all from content markdown)
+- `<hr class="header-separator">` added between `</header>` and `{{ content }}` in `note.njk`
 
 ---
 
