@@ -244,10 +244,10 @@ a[href^="mailto"] {
   transition: color 0.2s, background 0.2s, border-color 0.2s;
 }
 .header-tags .tag:hover, .header-tags a.tag:hover {
-  color: var(--orange) !important;
-  background: var(--orange-tint2) !important;
-  border-color: rgba(200,90,24,0.4) !important;
-  border-bottom-color: rgba(200,90,24,0.4) !important;
+  color: #ffffff !important;
+  background: rgba(200, 90, 24, 0.80) !important;
+  border-color: rgba(200, 90, 24, 0.80) !important;
+  border-bottom-color: rgba(200, 90, 24, 0.80) !important;
 }
 
 /* Body tags (informational — family name, relation labels)
