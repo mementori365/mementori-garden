@@ -96,13 +96,13 @@ h1 {
   font-weight: 300 !important;
   letter-spacing: -0.025em;
   margin-bottom: 0.1em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #d8cbb0 !important;
 }
 h2 {
   font-size: 1.5rem !important;
   font-weight: 400 !important;
   margin-top: 2.5em;
-  padding-bottom: 0.3em;
-  border-bottom: 1px solid #d8cbb0 !important;
 }
 h3 {
   font-size: 1.05rem !important;
@@ -427,7 +427,7 @@ blockquote p { color: #6a6058 !important; margin-bottom: 0.4em; }
 /* ── 17. MISC ────────────────────────────────────────────────── */
 main.content img, .content img { width: 100% !important; border-radius: 4px; margin: 1.5em 0; display: block; }
 hr { border: none !important; border-top: 1px solid #d8cbb0 !important; margin: 2.5em 0 !important; }
-hr.header-separator { margin: 1em 0 0 !important; }
+hr.header-separator { display: none !important; }
 table { width: 100%; border-collapse: collapse; font-family: var(--font-mono) !important; font-size: 0.82em !important; }
 th { font-weight: 500; border-bottom: 1px solid #d8cbb0; padding: 0.4em 0.8em; text-align: left; color: #2a2520 !important; }
 td { border-bottom: 1px solid #ead8be; padding: 0.35em 0.8em; color: #6a6058 !important; }
@@ -437,19 +437,29 @@ td { border-bottom: 1px solid #ead8be; padding: 0.35em 0.8em; color: #6a6058 !im
 #term { font-family: var(--font-body) !important; background: #ede0c8 !important; color: #2a2520 !important; border: 1px solid #d8cbb0 !important; }
 
 /* ── 18. HEADER META AREA ────────────────────────────────────── */
-main.content header { margin-bottom: 1.5em; padding-bottom: 1em; border-bottom: 1px solid #d8cbb0; }
+main.content header { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
 .header-meta { margin-top: 0.6em; }
 .header-tags { display: flex; flex-wrap: wrap; gap: 0.2em; margin-top: 0.4em; }
-.header-details {
+/* Dateline — full-width strip, acts as the page divider (newspaper masthead) */
+.header-dateline {
+  display: block;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: #6a6058;
+  font-size: 0.82rem;
+  color: #2a2520;
   background: #ede0c8;
-  padding: 0.35em 0.7em;
-  border-radius: 3px;
-  display: inline-block;
-  margin-top: 0.5em;
+  padding: 0.48em 0;
+  margin-top: 0.6em;
+  border-top: 1px solid #d8cbb0;
+  border-bottom: 1px solid #d8cbb0;
   letter-spacing: 0.01em;
+}
+/* Secondary meta — participants, duration, language, published by */
+.header-secondary {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: #a09890;
+  padding: 0.7em 0 0;
+  margin-bottom: 1.8em;
 }
 
 
@@ -522,11 +532,12 @@ body > footer, body > .site-footer, body > .footer {
   p code, li code { background: transparent !important; color: #5a5450 !important; }
   mark { background-color: rgba(224,112,48,0.15) !important; color: #e0dbd3 !important; }
   hr { border-color: #383028 !important; }
-  h2 { border-color: #383028 !important; }
+  h1 { border-color: #383028 !important; }
   .header-tags .tag, .header-tags a.tag { color: rgba(224,112,48,0.5) !important; background: rgba(224,112,48,0.07) !important; border-color: rgba(224,112,48,0.18) !important; }
   main.content .tag, main.content a.tag { color: #5a5450 !important; border-color: rgba(90,84,80,0.3) !important; }
   td { color: #8a837c !important; border-color: #383028 !important; }
   th { color: #e0dbd3 !important; border-color: #383028 !important; }
   body > footer, body > .site-footer, body > .footer { border-top-color: #383028 !important; color: #5a5450 !important; }
-  .header-details { background: #252220 !important; color: #8a837c !important; }
+  .header-dateline { background: #252220 !important; color: #8a837c !important; border-color: #383028 !important; }
+  .header-secondary { color: #5a5450 !important; }
 }
