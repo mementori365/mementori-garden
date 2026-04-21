@@ -311,6 +311,9 @@ main.content picture, .content picture {
   background-color: #ead8be !important;
   color: #6a6058 !important;
 }
+/* Depth lines: only show for nested filelist containers, not root level */
+.filelist { border-left: none !important; }
+.filelist .filelist { border-left: 1px solid #d8cbb0 !important; }
 /* Folder names — faded mono, uppercase */
 .foldername, span.foldername {
   font-family: var(--font-mono) !important;
@@ -419,6 +422,7 @@ blockquote p { color: #6a6058 !important; margin-bottom: 0.4em; }
 .backlink-title { font-size: 0.64rem !important; text-transform: uppercase; letter-spacing: 0.08em; color: #a09890 !important; margin-bottom: 0.5em; }
 .backlink-card a { color: #a09890 !important; border-bottom: none !important; transition: color 0.15s; }
 .backlink-card a:hover { color: var(--orange) !important; }
+.no-backlinks-message { font-family: var(--font-mono) !important; font-size: 0.74rem !important; font-style: normal !important; color: #a09890 !important; }
 
 /* ── 17. MISC ────────────────────────────────────────────────── */
 main.content img, .content img { width: 100% !important; border-radius: 4px; margin: 1.5em 0; display: block; }
