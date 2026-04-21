@@ -486,7 +486,7 @@ body > footer, body > .site-footer, body > .footer {
 
 /* ── 19. DARK MODE ───────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
-  .theme-dark, body.theme-dark {
+  :root, .theme-dark, body.theme-dark {
     --background-primary:         #1c1a18 !important;
     --background-primary-alt:     #252220 !important;
     --background-secondary:       #211f1c !important;
