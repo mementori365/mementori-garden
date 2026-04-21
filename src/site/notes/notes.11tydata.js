@@ -16,9 +16,11 @@ module.exports = {
         return "/";
       }
       if (data.permalink) {
-        // DG plugin writes /notes/... permalinks; strip that prefix so
-        // pages always live at /2M/... regardless of what Obsidian saved.
-        return data.permalink.replace(/^\/notes\//, '/');
+        const p = data.permalink;
+        // Ensure /notes/ prefix — DG plugin generates this natively.
+        // Pages without it (hand-set in frontmatter) get it added here.
+        if (p === '/' || p.startsWith('/notes/')) return p;
+        return '/notes' + p;
       }
       return undefined;
     },

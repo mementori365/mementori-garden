@@ -447,12 +447,13 @@ main.content header { margin-bottom: 0; padding-bottom: 0; border-bottom: none; 
   font-size: 0.82rem;
   color: #2a2520;
   background: #ede0c8;
-  padding: 0.48em 0;
-  margin-top: 0.6em;
+  padding: 0.5em 0;
+  margin-top: 0.7em;
   border-top: 1px solid #d8cbb0;
   border-bottom: 1px solid #d8cbb0;
   letter-spacing: 0.01em;
 }
+main.content header { margin-bottom: 0.8em; }
 /* Secondary meta — participants, duration, language, published by */
 .header-secondary {
   font-family: var(--font-mono);
@@ -538,6 +539,6 @@ body > footer, body > .site-footer, body > .footer {
   td { color: #8a837c !important; border-color: #383028 !important; }
   th { color: #e0dbd3 !important; border-color: #383028 !important; }
   body > footer, body > .site-footer, body > .footer { border-top-color: #383028 !important; color: #5a5450 !important; }
-  .header-dateline { background: #252220 !important; color: #8a837c !important; border-color: #383028 !important; }
+  .header-dateline { background: transparent !important; color: #8a837c !important; border-color: #383028 !important; }
   .header-secondary { color: #5a5450 !important; }
 }
