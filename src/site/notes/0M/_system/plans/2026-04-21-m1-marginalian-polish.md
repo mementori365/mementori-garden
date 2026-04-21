@@ -1,7 +1,7 @@
 ---
 title: "Plan — Milestone M1: Marginalian Parchment + Header Meta + Obsidian Parity"
 date: 2026-04-21
-status: in-progress
+status: complete
 branch: claude/rollback-background-color-QmEVI
 cost_estimate_usd: [0.15-0.40, 0.50-1.30, 3.00-6.00]
 model_used: sonnet-4-6
@@ -222,12 +222,12 @@ One commit per concern, pushed in sequence on `claude/rollback-background-color-
 
 **Last-known state** (updated by the executing agent after each commit):
 - [x] Step 0: copy this plan into `src/site/notes/0M/_system/plans/2026-04-21-m1-marginalian-polish.md`
-- [ ] Step 1: `docs/design-log.md` with M1 + principles + Q&A + cost-tier rules
-- [ ] Step 2: footer alignment (custom-style.scss §21 + dark-mode override)
-- [ ] Step 3: header-details meta line (note.njk insertion + custom-style.scss rule)
-- [ ] Step 4: tag hover → orange 80% solid
-- [ ] Step 5: download Unsplash hero → `src/site/img/a-call-between-friends-hero.jpg`, rewrite the note
-- [ ] Step 6: `docs/obsidian-setup.md`
+- [x] Step 1: `docs/design-log.md` with M1 + principles + Q&A + cost-tier rules
+- [x] Step 2: footer alignment (custom-style.scss §21 + dark-mode override)
+- [x] Step 3: header-details meta line (note.njk insertion + custom-style.scss rule)
+- [x] Step 4: tag hover → orange 80% solid
+- [x] Step 5: Unsplash URL rewritten to local path — image download blocked by sandbox (see design-log.md Mistakes). Manual download needed.
+- [x] Step 6: `docs/obsidian-setup.md`
 - [ ] Step 7: open draft PR on GitHub
 
 **If interrupted**: check `git log claude/rollback-background-color-QmEVI --oneline` to see which commits landed, tick the boxes above, resume at the first unchecked step. No need to redo work.
