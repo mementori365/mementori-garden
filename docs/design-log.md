@@ -95,6 +95,12 @@ Rule: **default to the cheapest tier that completes without human intervention.*
 
 ---
 
+**2026-04-21 · Unsplash image download blocked in CI/sandbox environment (HTTP 403 host_not_allowed)**
+All outbound HTTP requests in the execution sandbox return `403 host_not_allowed`. Cannot download the Unsplash hero at automation time.
+Action taken: rewrote the markdown image line to the local path `(/img/a-call-between-friends-hero.jpg)` — the note is correct but the file is missing. Nhan must download the image manually from `https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=80` and place it at `src/site/img/a-call-between-friends-hero.jpg` before the next deploy.
+
+---
+
 **2026-04-20 · Background colour drifted to #faf9f7 (near-white)**
 Rolled back to `#f5ecd7` in commit `9e59a2c`.
 Lesson: when anchoring to a reference site (themarginalian.org), read the hex — don't eyeball "cream". The eye perceives warmer as equivalent when it isn't.
