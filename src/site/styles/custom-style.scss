@@ -285,9 +285,16 @@ mark {
 /* ── 10. CONTENT CONTAINER ──────────────────────────────────── */
 main.content, .content.cm-s-obsidian {
   max-width: var(--content-width);
+  min-height: calc(100vh - var(--dg-content-padding-top, 90px));
   background: #f5ecd7 !important;
   color: #2a2520 !important;
   font-family: var(--font-body) !important;
+}
+
+/* ── 10b. HERO IMAGE / PICTURE FIX ──────────────────────────── */
+main.content picture, .content picture {
+  display: block;
+  width: 100%;
 }
 
 /* ── 11. NAVBAR ──────────────────────────────────────────────── */
