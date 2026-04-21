@@ -44,6 +44,19 @@ Five things you must not re-decide:
 
 ---
 
+### M2 · Dark-mode content column + header-details pill · 2026-04-21 (v1.8)
+
+**Status:** complete
+**Branch:** `claude/fix-background-color-29Rcp`
+
+**What was fixed:**
+- Dark-mode content column specificity (`custom-style.scss` §23): `main.content.cm-s-obsidian` upgrade kills the "2 black bars" — content column now correctly flips to `#1c1a18` with cream text `#e0dbd3` when the OS is in dark mode.
+- `.header-details` mono pill styled (§22) — had been spec'd in M1 plan but never landed in CSS.
+- `hr.header-separator` thin-rule style added (§22) — replaces browser default 3D groove.
+- Internal link colour in dark mode tuned to Hermès-cream-orange `#E07030`, hover `#F08040`.
+
+---
+
 ### V1 · Stable baseline · 2026-04-21
 
 **Status:** complete (tagged as milestone before V1.1 work begins)
@@ -135,6 +148,13 @@ Rule: **default to the cheapest tier that completes without human intervention.*
 ## Mistakes & Fixes Log
 
 *Reverse-chronological. Each entry ≤ 3 lines.*
+
+---
+
+**2026-04-21 · Dark mode showed "2 black bars" — content column stayed parchment**
+Root cause: `.content.cm-s-obsidian` (specificity 0,2,0) in the light-mode rule out-specificed the dark-mode override which only used `main.content` (0,1,1). Both sides had `!important` — ties break on specificity.
+Fix: dark-mode override upgraded to `main.content.cm-s-obsidian` (0,2,1) so it wins. Also added `.header-details` + `hr.header-separator` CSS that had been spec'd in M1 but never committed.
+Lesson: when a light-mode rule uses a combined class list (`.a.b`), the dark-mode override must match or exceed that specificity. `!important` does not rescue a specificity loss.
 
 ---
 
