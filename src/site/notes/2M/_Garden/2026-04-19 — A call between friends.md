@@ -31,7 +31,7 @@ tags:
 jotbird_publish: true
 jotbird_link: https://share.jotbird.com/warm-spirited-butte
 jotbird_expires: 2026-05-19
-dg-publish: true
+dg-publish: false
 permalink: /2M/_Garden/2026-04-19-a-call-between-friends/
 ---
 

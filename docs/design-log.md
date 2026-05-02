@@ -107,7 +107,21 @@ Hero image = mental anchor. Every published note should have a hero that grounds
 - **Generic stock photos** (not personal) → an Unsplash URL is fine to keep in the markdown, because the image is already publicly hosted and stable. Reference: `![alt](https://images.unsplash.com/photo-XXXXX?w=1400&q=80)`. Closing the laptop does NOT affect it.
 - **Missing / placeholder** → use an Unsplash URL as temporary until a personal photo is ready. Mark the note with `hero_status: placeholder` in frontmatter so it's easy to grep.
 
-**System/AI plan files** belong in `docs/plans/`, NOT in `src/site/notes/`. Eleventy builds everything in `src/site/notes/` publicly regardless of `dg-publish: false`. The `dg-publish` flag only controls the Obsidian plugin's export, not Eleventy's build.
+**System/AI plan files** belong in `docs/plans/`, NOT in `src/site/notes/`. The visibility gate is the `publish` field below — see the Vault YAML principle.
+
+### Vault YAML is the source of truth (LOCKED — do not change without Nhan's explicit consent)
+
+> A note is public **iff its frontmatter `publish` field is the literal string `publish` or `published`**. Anything else — missing key, `false`, empty string, any other value — means **not public**.
+>
+> - `publish: publish` — the note's author (Nhan or a human) wrote this.
+> - `publish: published` — set by an automated/AI publishing party to mark the file as cleared and live.
+> - Anything else → Eleventy skips the file entirely (`permalink: false` in `notes.11tydata.js`, excluded from `collections.publishedNotes` in `.eleventy.js`).
+>
+> The Garden index is auto-generated from `collections.publishedNotes`. To unpublish: open the note in Obsidian, change/remove the `publish` field, save, run Publish All. The next Vercel deploy removes the page and its index link.
+>
+> **Note on `dg-publish`:** that key is the Digital Garden plugin's internal sync flag (controls whether the plugin copies the file from the vault to the repo). It does **not** control public visibility. Our gate is `publish`, and only `publish`. The two keys can coexist; they answer different questions.
+>
+> **This rule is locked.** Do not introduce alternative gate fields, broaden the accepted values, or fall back to `dg-publish` for visibility without Nhan's explicit consent in writing.
 
 ### Code-field aesthetic (no `<code>` semantic tag)
 

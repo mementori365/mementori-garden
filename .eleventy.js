@@ -733,7 +733,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(faviconsPlugin, { outputDir: "dist" });
   eleventyConfig.addPlugin(tocPlugin, {
     ul: true,
-    tags: ["h1", "h2", "h3", "h4", "h5", "h6"],
+    tags: ["h2", "h3"],
   });
 
   // Canvas files are pre-compiled HTML by the plugin - don't process as markdown
@@ -775,6 +775,17 @@ module.exports = function(eleventyConfig) {
       closingSingleTag: "slash",
       singleTags: ["link"],
     },
+  });
+
+  // Vault YAML as source of truth.
+  // A note is public iff frontmatter `publish` is the string "publish" or "published".
+  // Anything else (missing, false, empty, other string) → not public.
+  // This rule is locked in docs/design-log.md and must not be changed without Nhan's consent.
+  const PUBLISH_VALUES = new Set(["publish", "published"]);
+  eleventyConfig.addCollection("publishedNotes", function(collectionApi) {
+    return collectionApi
+      .getFilteredByGlob("src/site/notes/**/*.md")
+      .filter((note) => PUBLISH_VALUES.has(note.data.publish));
   });
 
   userEleventySetup(eleventyConfig);
