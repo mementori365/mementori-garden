@@ -468,6 +468,39 @@ a.filename:hover,
   .sidebar-container { position: static; }
 }
 
+/* ── 13c. SIDENOTES (margin footnotes) ──────────────────────── */
+
+.sidenote {
+  position: absolute;
+  width: 220px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  line-height: 1.55;
+  color: #6e6a62;
+  margin-left: 1.5em;
+}
+
+.sidenote-inline {
+  display: block;
+  padding: 0.6rem 0.9rem;
+  background: #ede0c8;
+  border-left: 2px solid #C85A18;
+  margin: 0.4rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: #6e6a62;
+}
+
+@media (min-width: 1280px) {
+  .sidenote-inline { display: none !important; }
+  section.footnotes { display: none !important; }
+}
+
+@media (max-width: 1279px) {
+  .sidenote { display: none !important; }
+}
+
 /* ── 14. BLOCKQUOTES ─────────────────────────────────────────── */
 
 blockquote {
