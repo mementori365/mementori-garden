@@ -107,7 +107,11 @@ Hero image = mental anchor. Every published note should have a hero that grounds
 - **Generic stock photos** (not personal) → an Unsplash URL is fine to keep in the markdown, because the image is already publicly hosted and stable. Reference: `![alt](https://images.unsplash.com/photo-XXXXX?w=1400&q=80)`. Closing the laptop does NOT affect it.
 - **Missing / placeholder** → use an Unsplash URL as temporary until a personal photo is ready. Mark the note with `hero_status: placeholder` in frontmatter so it's easy to grep.
 
-**System/AI plan files** belong in `docs/plans/`, NOT in `src/site/notes/`. Eleventy builds everything in `src/site/notes/` publicly regardless of `dg-publish: false`. The `dg-publish` flag only controls the Obsidian plugin's export, not Eleventy's build.
+**System/AI plan files** belong in `docs/plans/`, NOT in `src/site/notes/`. See the Vault YAML principle below for how `dg-publish` now controls Eleventy's build too.
+
+### Vault YAML is the source of truth
+
+> A note is public iff its frontmatter contains `dg-publish: true`. Eleventy filters out everything else at build time (`.eleventy.js` collection + `notes.11tydata.js` permalink gate). The Garden index is auto-generated from `collections.publishedNotes`. To unpublish: open the note in Obsidian, remove `dg-publish: true` (or set it to false), save, run Publish All. The next Vercel deploy removes the page and its index link.
 
 ### Code-field aesthetic (no `<code>` semantic tag)
 
