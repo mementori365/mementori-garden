@@ -10,6 +10,7 @@ significance: 9
 emotional_register: wonder
 roster: [gessner, luhmann, locke, davinci, hemingway, eco]
 dg-publish: true
+publish: published
 dg-home: false
 permalink: /2M/_Consilium/2026-04-19-gessner-order-chaos/
 ---

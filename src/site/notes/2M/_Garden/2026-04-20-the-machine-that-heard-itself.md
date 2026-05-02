@@ -36,6 +36,7 @@ tags:
 meisterwerk: true
 published_by: nhan
 dg-publish: true
+publish: published
 permalink: /2M/_Garden/2026-04-20-the-machine-that-heard-itself/
 ---
 ![0M/Attachments/6df13cdf2e5366744c98f6e259a88e4c_MD5.jpg](/img/user/0M/Attachments/6df13cdf2e5366744c98f6e259a88e4c_MD5.jpg)

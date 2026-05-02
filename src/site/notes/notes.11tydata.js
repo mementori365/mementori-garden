@@ -11,15 +11,17 @@ module.exports = {
       }
       return "layouts/note.njk";
     },
-    // Vault YAML gate: notes without dg-publish: true are not rendered.
-    // permalink: false tells Eleventy to skip writing the file entirely.
+    // Vault YAML gate. A note is public iff frontmatter `publish` is the string
+    // "publish" or "published". Anything else → permalink: false → Eleventy skips
+    // the file. This rule is locked in docs/design-log.md.
     permalink: (data) => {
       // gardenEntry (index) is always public
       if (data.tags.indexOf("gardenEntry") != -1) {
         return "/";
       }
       // Unpublished notes: skip build output entirely
-      if (data["dg-publish"] !== true) {
+      const publishValue = data.publish;
+      if (publishValue !== "publish" && publishValue !== "published") {
         return false;
       }
       if (data.permalink) {

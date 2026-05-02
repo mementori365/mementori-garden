@@ -3,7 +3,9 @@
 **Date:** 2026-05-02
 **For:** Sonnet 4.6 to execute (one session, no architecture decisions left)
 **Branch:** continue on `claude/plan-github-pages-h7BNj`
-**Goal:** Removing `dg-publish: true` (or equivalent) from a note in the Obsidian vault must cause it to disappear from the live site on the next deploy. No manual file deletion. No broken index links.
+**Goal:** Removing the publish flag from a note in the Obsidian vault must cause it to disappear from the live site on the next deploy. No manual file deletion. No broken index links.
+
+> **AMENDMENT (2026-05-02, locked):** The visibility gate is the `publish` field, not `dg-publish`. A note is public iff `publish: publish` (human author) or `publish: published` (AI/automated publisher). All `dg-publish` mentions below were the original draft; the implemented gate uses `publish`. See `docs/design-log.md` → "Vault YAML is the source of truth" (LOCKED). `dg-publish` remains the Obsidian plugin's internal sync flag and is unrelated to public visibility.
 
 ---
 

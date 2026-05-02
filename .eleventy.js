@@ -777,11 +777,15 @@ module.exports = function(eleventyConfig) {
     },
   });
 
-  // Vault YAML as source of truth: only notes with dg-publish: true are public.
+  // Vault YAML as source of truth.
+  // A note is public iff frontmatter `publish` is the string "publish" or "published".
+  // Anything else (missing, false, empty, other string) → not public.
+  // This rule is locked in docs/design-log.md and must not be changed without Nhan's consent.
+  const PUBLISH_VALUES = new Set(["publish", "published"]);
   eleventyConfig.addCollection("publishedNotes", function(collectionApi) {
     return collectionApi
       .getFilteredByGlob("src/site/notes/**/*.md")
-      .filter((note) => note.data["dg-publish"] === true);
+      .filter((note) => PUBLISH_VALUES.has(note.data.publish));
   });
 
   userEleventySetup(eleventyConfig);
