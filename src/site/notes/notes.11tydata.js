@@ -11,9 +11,16 @@ module.exports = {
       }
       return "layouts/note.njk";
     },
+    // Vault YAML gate: notes without dg-publish: true are not rendered.
+    // permalink: false tells Eleventy to skip writing the file entirely.
     permalink: (data) => {
+      // gardenEntry (index) is always public
       if (data.tags.indexOf("gardenEntry") != -1) {
         return "/";
+      }
+      // Unpublished notes: skip build output entirely
+      if (data["dg-publish"] !== true) {
+        return false;
       }
       if (data.permalink) {
         const p = data.permalink;

@@ -777,6 +777,13 @@ module.exports = function(eleventyConfig) {
     },
   });
 
+  // Vault YAML as source of truth: only notes with dg-publish: true are public.
+  eleventyConfig.addCollection("publishedNotes", function(collectionApi) {
+    return collectionApi
+      .getFilteredByGlob("src/site/notes/**/*.md")
+      .filter((note) => note.data["dg-publish"] === true);
+  });
+
   userEleventySetup(eleventyConfig);
 
   return {
