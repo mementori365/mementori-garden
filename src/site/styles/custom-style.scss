@@ -413,6 +413,18 @@ a.filename:hover,
   margin-bottom: 1em;
 }
 
+/* ── 12b. FILETREE connection lines ─────────────────────────── */
+/* No border on collapsed (display:none) or first/second nesting levels. */
+/* Show one guide line only at the deepest level where files live.        */
+
+.filelist { border-left: none; }
+.filelist .filelist { border-left: none; }
+.filelist .filelist .filelist {
+  border-left: 1px solid #d8cbb0;
+  margin-left: 0.5em;
+  padding-left: 0.5em;
+}
+
 /* ── 13. TOC (right side) ───────────────────────────────────── */
 
 .toc,
