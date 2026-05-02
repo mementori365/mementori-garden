@@ -168,9 +168,132 @@ Anything not in this list is invisible to the reader unless explicitly rendered 
 
 ---
 
+## Phase B — Reading-experience polish (after Phase A is green)
+
+Run only after Phase A (Steps 1–6) is merged and the live site rebuilds correctly. Before starting Phase B, **tag the post-Phase-A state so we can revert any single feature**:
+
+```
+git tag phase-a-stable
+git push --tags
+```
+
+Each step below is one commit. If anything regresses, `git revert <sha>` for that step alone — never rewrite global CSS to "fix" it.
+
+### Step B1 — Right-side floating Table of Contents
+
+We had this in an earlier version and Nhan liked it. The current right sidebar (240px, golden-ratio) is the home for it.
+
+- In `note.njk`, render a `<nav class="toc-floating">` block in the right column. Populate from headings using the existing eleventy-plugin-nesting-toc (or whatever the previous version used — search `git log --all --oneline | grep -i toc` for prior implementations and copy that approach).
+- Position: `position: sticky; top: 120px;` inside the right sidebar. Width follows the existing `--sidebar-right` var (240px).
+- Type: IBM Plex Mono, `0.74rem`, line-height 1.55, color `#a09890`, active link `#C85A18`.
+- Show only h2 + h3. Skip h1 (it's the page title) and h4+ (too deep for a floating outline).
+- Hide on viewports below 1024px (`@media (max-width: 1024px) { .toc-floating { display: none; } }`).
+
+**Acceptance:** scroll a long note → TOC stays visible on the right, current section highlighted in Hermès orange. Below 1024px the TOC vanishes (no broken layout on mobile).
+
+### Step B2 — Filetree connection lines (left sidebar)
+
+Today the filetree shows two vertical guide lines — too noisy. Rule:
+
+- **Collapsed folders:** no guide line.
+- **Expanded folders:** show one single guide line, only at the file level (deepest nesting where the actual notes sit).
+
+In `custom-style.scss`, find the `.filelist` and nested `.filelist .filelist` rules. Remove `border-left` from all but the deepest expanded level. The simplest implementation: drop all `border-left` rules on `.filelist`, then add it back on `.filelist[data-expanded="true"] > li > .filelist` (or whatever class the DG plugin attaches when a folder is open — inspect the rendered DOM).
+
+If the DG filetree doesn't tag expanded state in the DOM, fall back to: `.filelist .filelist .filelist { border-left: 1px solid var(--border); }` (only the third nesting level gets the line, which is roughly where files live).
+
+**Acceptance:** open the live preview, expand and collapse folders → at most one vertical guide line visible at any time, sitting next to the deepest file list.
+
+### Step B3 — Sidenotes (footnotes-as-margin-notes, jotbird-style)
+
+Reference: `https://share.jotbird.com/essay` — numbered footnote markers in the body. On wide screens (≥ 1280px) the footnote text appears in the right margin next to the marker. On narrow screens (< 1280px) the marker stays inline; clicking it expands the footnote text inline below the paragraph (like a `<details>` accordion).
+
+Implementation:
+
+1. Markdown footnote syntax `[^1]` is already supported by eleventy's markdown-it plugin. Do **not** replace this — augment the rendered HTML.
+2. In `note.njk` (or via a small post-render JS file in `src/site/scripts/sidenotes.js`):
+   - Find each `<sup class="footnote-ref"><a href="#fn1">1</a></sup>` in the rendered article.
+   - On wide screens, clone the matching `<li id="fn1">` content into a `<aside class="sidenote" data-fn="1">` inserted into the right margin at the same vertical offset as the marker.
+   - On narrow screens, wrap the marker as a button that toggles a `<div class="sidenote-inline">` after the parent `<p>`.
+3. Hide the bottom `<section class="footnotes">` block when sidenotes are visible (wide screens). On narrow screens, keep it as the fallback list.
+
+CSS:
+
+```scss
+.sidenote {
+  position: absolute;
+  width: var(--sidebar-right);   // 240px
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.74rem;
+  line-height: 1.55;
+  color: #6e6a62;
+  margin-left: var(--gap);       // 30px
+}
+
+@media (max-width: 1279px) {
+  .sidenote { display: none; }
+  .sidenote-inline { display: block; padding: 0.6rem 0.9rem; background: #ede0c8; border-left: 2px solid #C85A18; margin: 0.4rem 0; }
+}
+
+@media (min-width: 1280px) {
+  .sidenote-inline { display: none; }
+  .footnotes { display: none; }
+}
+```
+
+This co-exists with the right-side TOC: TOC sticks at the top of the right sidebar, sidenotes flow inline next to the body text below it. If they collide, the TOC wins (sticky) and sidenotes start below `top: 360px` instead of `top: 120px`.
+
+**Acceptance:**
+- ≥ 1280px viewport: footnotes appear in the right margin, no bottom footnotes section, TOC also visible above them.
+- < 1280px viewport: footnotes are clickable inline, expanding below the paragraph.
+- Existing footnote markdown (`[^1]` … `[^1]: text`) continues to work without rewriting any note.
+
+### Step B4 — Dark mode pass
+
+Reference jotbird's dark mode: warm dark background (not pure black), generous contrast on body type, accents desaturated.
+
+- Light mode stays untouched (it's signed off in the design log).
+- Dark mode tokens in `custom-style.scss` `.theme-dark` block:
+  - `--bg: #1c1a18` (already locked)
+  - `--surface: #252220`
+  - `--border: #383028`
+  - `--text: #e8e0d2`
+  - `--muted: #a09890`
+  - `--accent: #E07030`
+  - `--sidenote-bg: #2a2520`
+  - Yellow H2 highlighter: existing `linear-gradient(...)` at 18% opacity (already locked).
+- Toggle: a small sun/moon icon in the top-right corner of the page header. Persists choice in `localStorage`. If no preference saved, follow `prefers-color-scheme`.
+
+**Acceptance:** toggle icon flips palette without page reload; reload preserves choice; sidenotes, TOC, filetree, footnotes all readable in both modes.
+
+---
+
+## Rollback strategy (read this before starting Phase B)
+
+Tags to create up-front:
+
+```
+git tag v1-stable          7769888
+git tag v1.1-stable        a68d1a0
+git tag phase-a-stable     <after Phase A merges>
+git push --tags
+```
+
+If a Phase B step regresses something:
+
+1. **First try** — `git revert <sha-of-bad-commit>` on the same branch, push, redeploy. Single-step undo, history preserved.
+2. **If multiple steps need undoing** — `git reset --hard phase-a-stable` on a fresh branch, cherry-pick the steps that worked, push as a new PR.
+3. **Never** rewrite `custom-style.scss` globally to "fix" a broken Phase B feature. The whole point of staging it as B1 → B2 → B3 → B4 is that each is independently revertable.
+
+If a feature is genuinely too risky to land (e.g. sidenotes break on iOS Safari), drop it from this milestone and open a follow-up plan. Do not block the others on it.
+
+---
+
 ## Cost tier
 
-**Recommended:** Sonnet 4.6. The work is mechanical: one config edit, one template edit, one frontmatter audit, one doc append. No architecture decisions remain — they are settled in this plan.
+**Recommended:** Sonnet 4.6 for both phases. Phase A is mechanical config + Nunjucks. Phase B is bounded CSS + a small JS file for sidenotes; each step has explicit acceptance criteria.
 
-**Skip Opus.** No ambiguity to resolve.
-**Skip Haiku.** Multi-file edits with light Nunjucks logic are above its sweet spot.
+**Skip Opus.** No ambiguity to resolve — all design decisions are settled here.
+**Skip Haiku.** Phase B's JS + responsive CSS is above its sweet spot.
+
+**Budget cap:** if Sonnet has not landed Phase A by ~10 commits or Phase B by ~12 commits, stop and ping Nhan. Do not keep iterating.
