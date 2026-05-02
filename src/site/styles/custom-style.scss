@@ -681,6 +681,33 @@ td {
   border: 1px solid #d8cbb0 !important;
 }
 
+/* ── 21b. DARK MODE TOGGLE BUTTON ────────────────────────────── */
+
+#dark-mode-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999;
+  background: rgba(245, 236, 215, 0.9);
+  border: 1px solid #d8cbb0;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+  padding: 0;
+}
+
+#dark-mode-toggle:hover {
+  background: #ede0c8;
+  border-color: #C85A18;
+}
+
 /* ── 22. HEADER META (title + tags at top of note) ──────────── */
 
 header {
@@ -700,13 +727,78 @@ header {
   margin-top: 0.4em;
 }
 
-/* ── 23. DARK MODE (genuine prefers-color-scheme) ───────────────
+/* ── 23. DARK MODE ───────────────────────────────────────────────
+   Activated by: data-color-mode="dark" on <html> (manual toggle)
+   OR prefers-color-scheme: dark (system default, no saved pref).
+   Tokens follow the Phase B4 spec from the design plan.
+   ─────────────────────────────────────────────────────────── */
+
+:root[data-color-mode="dark"] .theme-dark,
+:root[data-color-mode="dark"] body.theme-dark {
+  --bg:         #1c1a18;
+  --surface:    #252220;
+  --border:     #383028;
+  --text:       #e8e0d2;
+  --muted:      #a09890;
+  --accent:     #E07030;
+  --sidenote-bg:#2a2520;
+
+  --background-primary:         #1c1a18 !important;
+  --background-primary-alt:     #252220 !important;
+  --background-secondary:       #211f1c !important;
+  --background-secondary-alt:   #282521 !important;
+  --background-modifier-border: #383028 !important;
+  --text-normal:    #e8e0d2 !important;
+  --text-muted:     #a09890 !important;
+  --text-faint:     #5a5450 !important;
+  --text-accent:    #E07030 !important;
+  --interactive-accent:      #E07030 !important;
+  --link-color:              #E07030 !important;
+  --link-external-color:     #6090c0 !important;
+  --color-base-00: #1c1a18 !important;
+  --color-base-100: #f5f1ec !important;
+  --mono-rgb-0:   0, 0, 0 !important;
+  --mono-rgb-100: 255, 255, 255 !important;
+  --highlight-mix-blend-mode: lighten !important;
+  --orange:       #E07030;
+  --orange-hover: #F08040;
+  --orange-faint: rgba(224, 112, 48, 0.5);
+  --orange-tint:  rgba(224, 112, 48, 0.07);
+  --orange-tint2: rgba(224, 112, 48, 0.14);
+  --blue-link:    #6090c0;
+  --blue-hover:   #80aad8;
+}
+
+:root[data-color-mode="dark"] {
+  html, body { background-color: #1c1a18 !important; color: #e8e0d2 !important; }
+  .filetree-wrapper   { background-color: #211f1c !important; }
+  .filetree-sidebar   { background-color: #211f1c !important; color: #a09890 !important; }
+  main.content        { background: #1c1a18 !important; color: #e8e0d2 !important; }
+  h1, h2, h3, h4, h5, h6 { color: #e8e0d2 !important; }
+  p, li               { color: #e8e0d2 !important; }
+  blockquote          { color: #a09890 !important; }
+  blockquote p        { color: #a09890 !important; }
+  code, pre           { background: #252220 !important; color: #a09890 !important; }
+  p code, li code     { background: #252220 !important; color: #a09890 !important; }
+  hr                  { border-color: #383028 !important; }
+  h2                  { background: linear-gradient(transparent 58%, rgba(255, 210, 40, 0.18) 58%) !important; }
+  h3                  { color: #c8c2ba !important; }
+  mark                { background-color: rgba(224, 112, 48, 0.15) !important; color: #e8e0d2 !important; }
+  .sidenote           { color: #a09890 !important; background: #2a2520; }
+  .sidenote-inline    { background: #2a2520 !important; }
+  .toc, .toc-container { color: #a09890 !important; border-left-color: #383028 !important; }
+  .toc a              { color: #a09890 !important; }
+  #dark-mode-toggle   { background: rgba(28, 26, 24, 0.9); border-color: #383028; color: #e8e0d2; }
+  #dark-mode-toggle:hover { border-color: #E07030; }
+}
+
+/* ── 23b. DARK MODE via prefers-color-scheme ─────────────────────
    For users who explicitly want dark — overrides our light defaults
    ─────────────────────────────────────────────────────────── */
 
 @media (prefers-color-scheme: dark) {
-  .theme-dark,
-  body.theme-dark {
+  :root:not([data-color-mode="light"]) .theme-dark,
+  :root:not([data-color-mode="light"]) body.theme-dark {
     --background-primary:         #1c1a18 !important;
     --background-primary-alt:     #252220 !important;
     --background-secondary:       #211f1c !important;
